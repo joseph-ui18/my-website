@@ -23,38 +23,57 @@
             </svg>
           </button>
         </div>
-
-        <ul class="hidden lg:flex space-x-6 text-gray-700 font-medium">
-          <li><a href="#" class="hover:text-blue-600">Home</a></li>
-          <li class="relative group">
-            <a href="#" class="hover:text-blue-600">Laboratory Activities</a>
-            <ul class="absolute left-0 top-full hidden group-hover:block bg-white shadow-md mt-1 w-40">
-              <li><a href="#" class="block px-4 py-2 hover:bg-gray-100">Week 1</a></li>
-              <li><a href="#" class="block px-4 py-2 hover:bg-gray-100">Week 2</a></li>
-              <li><a href="#" class="block px-4 py-2 hover:bg-gray-100">Week 3</a></li>
-            </ul>
-          </li>
-          <li><a href="#" class="hover:text-blue-600">Final Activity</a></li>
-          <li><a href="#" class="hover:text-blue-600">Resources</a></li>
-          <li><a href="#" class="hover:text-blue-600">Contact</a></li>
-        </ul>
       </nav>
     </div>
 
+    <!-- Mobile Menu -->
     <ul id="mobile-menu" class="hidden flex-col px-4 pb-4 space-y-2 bg-white lg:hidden">
       <li><a href="#" class="block py-2 hover:bg-gray-100 rounded">Home</a></li>
 
+      <!-- Laboratory Activities -->
       <li>
-        <button id="syllabus-btn" class="w-full text-left py-2 hover:bg-gray-100 rounded flex justify-between items-center focus:outline-none">
+        <button id="lab-btn" class="w-full text-left py-2 hover:bg-gray-100 rounded flex justify-between items-center focus:outline-none">
           Laboratory Activities
-          <svg id="arrow" class="w-4 h-4 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg id="lab-arrow" class="w-4 h-4 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
           </svg>
         </button>
-        <ul id="syllabus-menu" class="hidden flex-col pl-4 mt-2 space-y-1">
-          <li><a href="#" class="block py-2 hover:bg-gray-100 rounded">Week 1</a></li>
-          <li><a href="#" class="block py-2 hover:bg-gray-100 rounded">Week 2</a></li>
-          <li><a href="#" class="block py-2 hover:bg-gray-100 rounded">Week 3</a></li>
+
+        <ul id="lab-menu" class="hidden flex-col pl-4 mt-2 space-y-1">
+
+          <!-- Installation OS -->
+          <li>
+            <button id="install-btn" class="w-full text-left py-2 hover:bg-gray-100 rounded flex justify-between items-center focus:outline-none">
+              Installation OS
+              <svg id="install-arrow" class="w-4 h-4 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+              </svg>
+            </button>
+            <ul id="install-menu" class="hidden flex-col pl-4 mt-2 space-y-1">
+              <li><a href="#" class="block py-2 hover:bg-gray-100 rounded">Windows 95</a></li>
+              <li><a href="#" class="block py-2 hover:bg-gray-100 rounded">Windows NT 4.0</a></li>
+              <li><a href="#" class="block py-2 hover:bg-gray-100 rounded">Windows 98 NE</a></li>
+              <li><a href="#" class="block py-2 hover:bg-gray-100 rounded">Windows 2000</a></li>
+              <li><a href="#" class="block py-2 hover:bg-gray-100 rounded">Windows Server 2000</a></li>
+              <li><a href="#" class="block py-2 hover:bg-gray-100 rounded">Windows ME</a></li>
+              <li><a href="#" class="block py-2 hover:bg-gray-100 rounded">Windows XP</a></li>
+              <li><a href="#" class="block py-2 hover:bg-gray-100 rounded">Windows 98 Server 2003</a></li>
+              <li><a href="#" class="block py-2 hover:bg-gray-100 rounded">Windows Vista</a></li>
+              <li><a href="#" class="block py-2 hover:bg-gray-100 rounded">Windows Server 2008 R2</a></li>
+              <li><a href="#" class="block py-2 hover:bg-gray-100 rounded">Windows 7</a></li>
+              <li><a href="#" class="block py-2 hover:bg-gray-100 rounded">Windows 8</a></li>
+              <li><a href="#" class="block py-2 hover:bg-gray-100 rounded">Windows 10</a></li>
+              <li><a href="#" class="block py-2 hover:bg-gray-100 rounded">Windows 11</a></li>
+            </ul>
+          </li>
+
+          <!-- Other Lab Activities -->
+          <li><a href="#" class="block py-2 hover:bg-gray-100 rounded">Active Directory</a></li>
+          <li><a href="#" class="block py-2 hover:bg-gray-100 rounded">DHCP & Joining Workstations</a></li>
+          <li><a href="#" class="block py-2 hover:bg-gray-100 rounded">Group Policy Management</a></li>
+          <li><a href="#" class="block py-2 hover:bg-gray-100 rounded">RAID</a></li>
+          <li><a href="#" class="block py-2 hover:bg-gray-100 rounded">File Services</a></li>
+
         </ul>
       </li>
 
@@ -70,19 +89,29 @@
   </main>
 
   <script>
+    // Toggle mobile menu
     const menuBtn = document.getElementById('menu-btn');
     const mobileMenu = document.getElementById('mobile-menu');
-    const syllabusBtn = document.getElementById('syllabus-btn');
-    const syllabusMenu = document.getElementById('syllabus-menu');
-    const arrow = document.getElementById('arrow');
-
     menuBtn.addEventListener('click', () => {
       mobileMenu.classList.toggle('hidden');
     });
 
-    syllabusBtn.addEventListener('click', () => {
-      syllabusMenu.classList.toggle('hidden');
-      arrow.classList.toggle('rotate-180');
+    // Toggle Laboratory Activities
+    const labBtn = document.getElementById('lab-btn');
+    const labMenu = document.getElementById('lab-menu');
+    const labArrow = document.getElementById('lab-arrow');
+    labBtn.addEventListener('click', () => {
+      labMenu.classList.toggle('hidden');
+      labArrow.classList.toggle('rotate-180');
+    });
+
+    // Toggle Installation OS
+    const installBtn = document.getElementById('install-btn');
+    const installMenu = document.getElementById('install-menu');
+    const installArrow = document.getElementById('install-arrow');
+    installBtn.addEventListener('click', () => {
+      installMenu.classList.toggle('hidden');
+      installArrow.classList.toggle('rotate-180');
     });
   </script>
 
