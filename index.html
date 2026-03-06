@@ -8,18 +8,15 @@
 </head>
 <body class="bg-gray-50">
 
-  <!-- Header -->
   <header class="bg-white shadow-md">
+
     <div class="container mx-auto flex justify-between items-center p-4">
-      <!-- Left: Course Name -->
       <div class="text-xl font-bold text-gray-800">
         ITOS220-T: Operating Systems
       </div>
 
-      <!-- Right: Desktop Menu -->
       <nav>
         <div class="lg:hidden">
-          <!-- Mobile menu button -->
           <button id="menu-btn" class="text-gray-800 focus:outline-none">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
@@ -27,28 +24,26 @@
           </button>
         </div>
 
-        <!-- Desktop Menu -->
         <ul class="hidden lg:flex space-x-6 text-gray-700 font-medium">
           <li><a href="#" class="hover:text-blue-600">Home</a></li>
           <li class="relative group">
-            <a href="#" class="hover:text-blue-600">Syllabus</a>
+            <a href="#" class="hover:text-blue-600">Laboratory Activities</a>
             <ul class="absolute left-0 top-full hidden group-hover:block bg-white shadow-md mt-1 w-40">
               <li><a href="#" class="block px-4 py-2 hover:bg-gray-100">Week 1</a></li>
               <li><a href="#" class="block px-4 py-2 hover:bg-gray-100">Week 2</a></li>
               <li><a href="#" class="block px-4 py-2 hover:bg-gray-100">Week 3</a></li>
             </ul>
           </li>
+          <li><a href="#" class="hover:text-blue-600">Final Activity</a></li>
           <li><a href="#" class="hover:text-blue-600">Resources</a></li>
           <li><a href="#" class="hover:text-blue-600">Contact</a></li>
         </ul>
       </nav>
     </div>
 
-    <!-- Mobile Menu -->
     <ul id="mobile-menu" class="hidden flex-col px-4 pb-4 space-y-2 bg-white lg:hidden">
       <li><a href="#" class="block py-2 hover:bg-gray-100 rounded">Home</a></li>
 
-      <!-- Syllabus Dropdown -->
       <li>
         <button id="syllabus-btn" class="w-full text-left py-2 hover:bg-gray-100 rounded flex justify-between items-center focus:outline-none">
           Laboratory Activities
@@ -69,13 +64,11 @@
     </ul>
   </header>
 
-  <!-- Main Content -->
   <main class="container mx-auto mt-10 text-center">
     <h1 class="text-3xl font-bold text-gray-800 mb-4">Welcome to ITOS220-T: Operating Systems</h1>
     <p class="text-gray-600">This is your course homepage hosted on GitHub Pages using Tailwind CSS.</p>
   </main>
 
-  <!-- Toggle Mobile Menu & Dropdown Script -->
   <script>
     const menuBtn = document.getElementById('menu-btn');
     const mobileMenu = document.getElementById('mobile-menu');
@@ -83,12 +76,10 @@
     const syllabusMenu = document.getElementById('syllabus-menu');
     const arrow = document.getElementById('arrow');
 
-    // Toggle mobile menu
     menuBtn.addEventListener('click', () => {
       mobileMenu.classList.toggle('hidden');
     });
 
-    // Toggle syllabus dropdown
     syllabusBtn.addEventListener('click', () => {
       syllabusMenu.classList.toggle('hidden');
       arrow.classList.toggle('rotate-180');
