@@ -36,20 +36,20 @@ Laboratory Activities
 <!-- Windows List -->
 <ul class="py-2 text-gray-700">
 
-<li><a class="block px-5 py-2 hover:bg-gray-100">Windows 95</a></li>
-<li><a class="block px-5 py-2 hover:bg-gray-100">Windows NT 4.0</a></li>
-<li><a class="block px-5 py-2 hover:bg-gray-100">Windows 98 SE</a></li>
-<li><a class="block px-5 py-2 hover:bg-gray-100">Windows 2000</a></li>
-<li><a class="block px-5 py-2 hover:bg-gray-100">Windows Server 2000</a></li>
-<li><a class="block px-5 py-2 hover:bg-gray-100">Windows ME</a></li>
-<li><a class="block px-5 py-2 hover:bg-gray-100">Windows XP</a></li>
-<li><a class="block px-5 py-2 hover:bg-gray-100">Windows Server 2003</a></li>
-<li><a class="block px-5 py-2 hover:bg-gray-100">Windows Vista</a></li>
-<li><a class="block px-5 py-2 hover:bg-gray-100">Windows Server 2008 R2</a></li>
-<li><a class="block px-5 py-2 hover:bg-gray-100">Windows 7</a></li>
-<li><a class="block px-5 py-2 hover:bg-gray-100">Windows 8</a></li>
-<li><a class="block px-5 py-2 hover:bg-gray-100">Windows 10</a></li>
-<li><a class="block px-5 py-2 hover:bg-gray-100">Windows 11</a></li>
+<li><a href="LaboratoryAct/windows95.html" class="block px-5 py-2 hover:bg-gray-100">Windows 95</a></li>
+<li><a href="LaboratoryAct/windowsnt4.html" class="block px-5 py-2 hover:bg-gray-100">Windows NT 4.0</a></li>
+<li><a href="LaboratoryAct/windows98se.html" class="block px-5 py-2 hover:bg-gray-100">Windows 98 SE</a></li>
+<li><a href="LaboratoryAct/windows2000.html" class="block px-5 py-2 hover:bg-gray-100">Windows 2000</a></li>
+<li><a href="LaboratoryAct/windowsserver2000.html" class="block px-5 py-2 hover:bg-gray-100">Windows Server 2000</a></li>
+<li><a href="LaboratoryAct/windowsme.html" class="block px-5 py-2 hover:bg-gray-100">Windows ME</a></li>
+<li><a href="LaboratoryAct/windowsxp.html" class="block px-5 py-2 hover:bg-gray-100">Windows XP</a></li>
+<li><a href="LaboratoryAct/windowsserver2003.html" class="block px-5 py-2 hover:bg-gray-100">Windows Server 2003</a></li>
+<li><a href="LaboratoryAct/windowsvista.html" class="block px-5 py-2 hover:bg-gray-100">Windows Vista</a></li>
+<li><a href="LaboratoryAct/windowsserver2008r2.html" class="block px-5 py-2 hover:bg-gray-100">Windows Server 2008 R2</a></li>
+<li><a href="LaboratoryAct/windows7.html" class="block px-5 py-2 hover:bg-gray-100">Windows 7</a></li>
+<li><a href="LaboratoryAct/windows8.html" class="block px-5 py-2 hover:bg-gray-100">Windows 8</a></li>
+<li><a href="LaboratoryAct/windows10.html" class="block px-5 py-2 hover:bg-gray-100">Windows 10</a></li>
+<li><a href="LaboratoryAct/windows11.html" class="block px-5 py-2 hover:bg-gray-100">Windows 11</a></li>
 
 </ul>
 
@@ -58,11 +58,11 @@ Laboratory Activities
 <!-- Other Activities -->
 <ul class="py-2 text-gray-700">
 
-<li><a class="block px-5 py-2 hover:bg-gray-100">Active Directory</a></li>
-<li><a class="block px-5 py-2 hover:bg-gray-100">DHCP & Joining Workstations</a></li>
-<li><a class="block px-5 py-2 hover:bg-gray-100">Group Policy Management</a></li>
-<li><a class="block px-5 py-2 hover:bg-gray-100">RAID</a></li>
-<li><a class="block px-5 py-2 hover:bg-gray-100">File Services</a></li>
+<li><a href="LaboratoryAct/active_directory.html" class="block px-5 py-2 hover:bg-gray-100">Active Directory</a></li>
+<li><a href="LaboratoryAct/dhcp.html" class="block px-5 py-2 hover:bg-gray-100">DHCP & Joining Workstations</a></li>
+<li><a href="LaboratoryAct/group_policy.html" class="block px-5 py-2 hover:bg-gray-100">Group Policy Management</a></li>
+<li><a href="LaboratoryAct/raid.html" class="block px-5 py-2 hover:bg-gray-100">RAID</a></li>
+<li><a href="LaboratoryAct/file_services.html" class="block px-5 py-2 hover:bg-gray-100">File Services</a></li>
 
 </ul>
 
@@ -183,6 +183,14 @@ aboutArrow.classList.toggle('rotate-180');
 
 });
 
+</script>
+
+<script>
+fetch("footer.html")
+  .then(res => res.text())
+  .then(html => {
+    document.getElementById("footer").innerHTML = html;
+  });
 </script>
 
 </body>
