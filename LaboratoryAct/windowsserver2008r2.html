@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Windows Server 2008 R2 - Operating Systems Lab</title>
+  <link rel="icon" type="image/png" href="../image.jpg">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 flex flex-col min-h-screen">
+
+  <header class="bg-white shadow-md">
+    <div class="container mx-auto flex items-center justify-between p-4">
+      <a href="../index.html" class="text-sm text-blue-600 hover:underline">&larr; Back to Home</a>
+      <h1 class="text-lg font-semibold text-gray-800">Laboratory Activity: Windows Server 2008 R2</h1>
+      <span class="text-xs text-gray-400">ITOS220-T</span>
+    </div>
+  </header>
+
+  <main class="container mx-auto mt-10 px-4 flex-1">
+    <!-- Windows Server 2008 R2 Section -->
+    <section class="mb-12">
+      <h2 class="text-3xl font-bold text-gray-800 mb-6">Windows Server 2008 R2</h2>
+      
+      <div class="md:flex md:items-start md:gap-8">
+        <!-- Video -->
+        <div class="md:w-1/2 mb-6 md:mb-0">
+          <!--
+            To use your own YouTube link:
+            - If your link is https://www.youtube.com/watch?v=VIDEO_ID
+            - Replace VIDEO_ID in the src and href below.
+          -->
+          <div class="w-full">
+            <iframe class="w-full aspect-video rounded-lg shadow-lg"
+                  src="https://www.youtube.com/embed/RatzgGYZXsc"
+                  title="Active Directory Overview"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen>
+          </iframe>
+          </div>
+        </div>
+
+        <!-- Explanation / Your Notes -->
+        <div class="md:w-1/2 text-gray-700">
+          <h3 class="text-xl font-semibold mb-2">About Windows Server 2008 R2</h3>
+          <p class="mb-2">
+            <strong>Windows Server 2008 R2</strong> is built on the Windows 7 kernel and introduced improvements in virtualization (Hyper‑V), power management, Active Directory, and remote access technologies.
+          </p>
+          <p class="mb-2">
+            It is commonly used for domain controllers, file/print services, web servers, and application hosting.
+          </p>
+          <p class="mt-4 italic text-sm text-gray-500">
+            For Windows Server 2008 R2, I prepared the virtual machine with the recommended system requirements. The installation process included selecting the server edition, partitioning the disk, and installing the system files. After the setup completed, the server operating system was ready to use.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Lab Notes Section -->
+    <section class="mb-12">
+      <h3 class="text-2xl font-bold text-gray-800 mb-4">Lab Notes & Observations</h3>
+      <p class="text-gray-700 mb-2">
+        The installation of Windows Server 2008 began by booting from the installation DVD and starting the setup process. After selecting the language and system preferences, the installation continued by accepting the license agreement and choosing a custom installation. The administrator selected the server installation type and the partition where the system would be installed. The system copied files and restarted during the process. After installation, the administrator password was changed and initial server configurations such as network settings, time zone, and server roles were configured using Server Manager.
+      </p>
+    </section>
+  </main>
+
+  <div id="footer"></div>
+
+  <script>
+    fetch("../footer.html")
+      .then(res => res.text())
+      .then(html => {
+        const footerContainer = document.getElementById("footer");
+        if (footerContainer) {
+          footerContainer.innerHTML = html;
+        }
+      })
+      .catch(() => {});
+  </script>
+</body>
+</html>

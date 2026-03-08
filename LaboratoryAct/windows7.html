@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Windows 7 - Operating Systems Lab</title>
+  <link rel="icon" type="image/png" href="../image.jpg">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 flex flex-col min-h-screen">
+
+  <header class="bg-white shadow-md">
+    <div class="container mx-auto flex items-center justify-between p-4">
+      <a href="../index.html" class="text-sm text-blue-600 hover:underline">&larr; Back to Home</a>
+      <h1 class="text-lg font-semibold text-gray-800">Laboratory Activity: Windows 7</h1>
+      <span class="text-xs text-gray-400">ITOS220-T</span>
+    </div>
+  </header>
+
+  <main class="container mx-auto mt-10 px-4 flex-1">
+    <!-- Windows 7 Section -->
+    <section class="mb-12">
+      <h2 class="text-3xl font-bold text-gray-800 mb-6">Windows 7</h2>
+      
+      <div class="md:flex md:items-start md:gap-8">
+        <!-- Video -->
+        <div class="md:w-1/2 mb-6 md:mb-0">
+          <!--
+            To use your own YouTube link:
+            - If your link is https://www.youtube.com/watch?v=VIDEO_ID
+            - Replace VIDEO_ID in the src and href below.
+          -->
+          <div class="w-full">
+            <iframe class="w-full aspect-video rounded-lg shadow-lg"
+                  src="https://www.youtube.com/embed/nrVhSKmf7zo"
+                  title="Active Directory Overview"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen>
+          </iframe>
+          </div>
+        </div>
+
+        <!-- Explanation / Your Notes -->
+        <div class="md:w-1/2 text-gray-700">
+          <h3 class="text-xl font-semibold mb-2">About Windows 7</h3>
+          <p class="mb-2">
+            <strong>Windows 7</strong> focused on performance, stability, and usability improvements over Windows Vista. It refined the taskbar, introduced jump lists, and enhanced window management features such as Aero Snap and Aero Peek.
+          </p>
+          <p class="mb-2">
+            It became a very popular operating system for both home and business environments and remained widely used long after its initial release.
+          </p>
+          <p class="mt-4 italic text-sm text-gray-500">
+            To install Windows 7, I created a virtual machine and mounted the Windows 7 ISO file. The installation wizard guided me through selecting the installation type, partitioning the disk, and installing the operating system. After the installation finished, Windows 7 started successfully.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- System Requirements Section -->
+    <section class="mb-12">
+      <h3 class="text-2xl font-bold text-gray-800 mb-4">System Requirements</h3>
+      <p class="text-gray-700">
+        Typical minimum requirements for Windows 7 include a 1 GHz processor, 1–2 GB of RAM, and at least 16–20 GB of available disk space. In your VM, you can allocate more resources to improve responsiveness and experiment with different editions.
+      </p>
+    </section>
+
+    <!-- Lab Activity Section -->
+    <section class="mb-12">
+      <h3 class="text-2xl font-bold text-gray-800 mb-4">Laboratory Activity Notes</h3>
+      <p class="text-gray-700 mb-2">
+          The Windows 7 installation started by booting the computer from the Windows 7 DVD and loading the setup files. After selecting the language and system preferences, the installation proceeded by accepting the license agreement and choosing a custom installation. A partition was selected for installing the operating system, and the system copied the required files and restarted. After installation, the user configured their username, computer name, and password. Additional settings such as product key, Windows Update, time zone, and network location were also configured to complete the setup.
+        </p>
+    </section>
+  </main>
+
+  <div id="footer"></div>
+
+  <script>
+    fetch("../footer.html")
+      .then(res => res.text())
+      .then(html => {
+        const footerContainer = document.getElementById("footer");
+        if (footerContainer) {
+          footerContainer.innerHTML = html;
+        }
+      })
+      .catch(() => {});
+  </script>
+</body>
+</html>

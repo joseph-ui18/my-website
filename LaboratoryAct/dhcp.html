@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DHCP & Joining Workstations - Operating Systems Lab</title>
+  <link rel="icon" type="image/png" href="../image.jpg">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 flex flex-col min-h-screen">
+
+  <header class="bg-white shadow-md">
+    <div class="container mx-auto flex items-center justify-between p-4">
+      <a href="../index.html" class="text-sm text-blue-600 hover:underline">&larr; Back to Home</a>
+      <h1 class="text-lg font-semibold text-gray-800">Lab: DHCP & Joining Workstations</h1>
+      <span class="text-xs text-gray-400">ITOS220-T</span>
+    </div>
+  </header>
+
+  <main class="container mx-auto mt-10 px-4 flex-1">
+    <!-- DHCP Section -->
+    <section class="mb-12">
+      <h2 class="text-3xl font-bold text-gray-800 mb-6">DHCP Overview</h2>
+      
+      <div class="md:flex md:items-start md:gap-8">
+        <!-- Video -->
+        <div class="md:w-1/2 mb-6 md:mb-0">
+          <!--
+            To use your own YouTube link:
+            - If your link is https://www.youtube.com/watch?v=VIDEO_ID
+            - Replace VIDEO_ID in the src and href below.
+          -->
+          <div class="w-full">
+<iframe class="w-full aspect-video rounded-lg shadow-lg"
+src="https://www.youtube.com/embed/PGwAms2gNCY"
+title="Active Directory Overview"
+frameborder="0"
+allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+allowfullscreen>
+</iframe>
+</div>
+        </div>
+
+        <!-- Explanation / Your Notes -->
+        <div class="md:w-1/2 text-gray-700">
+          <h3 class="text-xl font-semibold mb-2">What is DHCP?</h3>
+          <p class="mb-2">
+            The <strong>Dynamic Host Configuration Protocol (DHCP)</strong> automatically assigns IP addresses and other network configuration details (such as gateway and DNS servers) to client devices on a network.
+          </p>
+          <p class="mb-2">
+            In a Windows Server environment, the DHCP role simplifies IP management and reduces configuration errors, especially in networks with many workstations.
+          </p>
+          <p class="mt-4 italic text-sm text-gray-500">
+            Replace this section with your own notes and explanation of how you configured DHCP in this lab.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Joining Workstations Section -->
+    <section class="mb-12">
+      <h3 class="text-2xl font-bold text-gray-800 mb-4">Joining Workstations to the Domain</h3>
+      <p class="text-gray-700 mb-2">
+        After DHCP is configured, workstations can automatically obtain network settings and then join the Active Directory domain using the assigned IP configuration.
+      </p>
+      <p class="text-gray-700 mb-2">
+        Document the process you followed to:
+      </p>
+      <ul class="list-disc list-inside text-gray-700 space-y-1">
+        <li>Verify that the workstation received an IP address from DHCP.</li>
+        <li>Configure DNS settings (if required).</li>
+        <li>Join the workstation to the domain.</li>
+        <li>Log in using a domain user account.</li>
+      </ul>
+    </section>
+
+    <!-- Lab Notes Section -->
+    <section class="mb-12">
+      <h3 class="text-2xl font-bold text-gray-800 mb-4">Lab Notes & Troubleshooting</h3>
+      <p class="text-gray-700">
+        Use this space to record any issues you encountered (e.g., IP conflicts, DNS problems, or domain join errors) and how you resolved them.
+      </p>
+    </section>
+  </main>
+
+  <div id="footer"></div>
+
+  <script>
+    fetch("../footer.html")
+      .then(res => res.text())
+      .then(html => {
+        const footerContainer = document.getElementById("footer");
+        if (footerContainer) {
+          footerContainer.innerHTML = html;
+        }
+      })
+      .catch(() => {});
+  </script>
+</body>
+</html>

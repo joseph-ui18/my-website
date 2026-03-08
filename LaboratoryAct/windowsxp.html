@@ -3,73 +3,88 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Windows 98 - Operating Systems Lab</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.3.2/dist/tailwind.min.css" rel="stylesheet">
+  <title>Windows XP - Operating Systems Lab</title>
+  <link rel="icon" type="image/png" href="../image.jpg">
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
+<body class="bg-gray-50 flex flex-col min-h-screen">
 
-<main class="container mx-auto mt-10 px-4">
-  <!-- Windows 98 Section -->
-  <section class="mb-12">
-    <h1 class="text-3xl font-bold text-gray-800 mb-6">Windows 98</h1>
-    
-    <div class="md:flex md:items-start md:gap-8">
-      <!-- Video -->
-      <div class="md:w-1/2 mb-6 md:mb-0">
-        <iframe class="w-full h-64 md:h-80 rounded-lg shadow-lg" 
-                src="https://www.youtube.com/embed/_YOUR_VIDEO_ID_" 
-                title="Windows 98 Overview" 
-                frameborder="0" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                allowfullscreen></iframe>
-        <p class="text-xs text-gray-500 mt-2">
-          Techquickie. (2015). Windows 98 Overview [Video]. YouTube.
-          <a href="https://www.youtube.com/watch?v=_YOUR_VIDEO_ID_" target="_blank" class="text-blue-600 underline">Link</a>
-        </p>
-      </div>
-
-      <!-- Explanation -->
-      <div class="md:w-1/2 text-gray-700">
-        <h2 class="text-xl font-semibold mb-2">About Windows 98</h2>
-        <p class="mb-2">
-          <strong>Windows 98</strong> is a graphical operating system developed by Microsoft as part of the Windows 9x family. It improved upon Windows 95 by providing better hardware support, USB compatibility, and enhanced system stability.
-        </p>
-        <p>
-          Key features of Windows 98 include Internet Explorer integration, improved file system handling, support for FAT32 partitions, and the ability to run legacy Windows 95 applications. It served as a bridge between early personal computing and modern Windows operating systems.
-        </p>
-      </div>
+  <header class="bg-white shadow-md">
+    <div class="container mx-auto flex items-center justify-between p-4">
+      <a href="../index.html" class="text-sm text-blue-600 hover:underline">&larr; Back to Home</a>
+      <h1 class="text-lg font-semibold text-gray-800">Laboratory Activity: Windows XP</h1>
+      <span class="text-xs text-gray-400">ITOS220-T</span>
     </div>
-  </section>
+  </header>
 
-  <!-- System Requirements Section -->
-  <section class="mb-12">
-    <h2 class="text-2xl font-bold text-gray-800 mb-4">System Requirements</h2>
-    <p class="text-gray-700">
-      Minimum: 486DX2 66 MHz CPU, 16 MB RAM, 195 MB hard disk space. Recommended: Pentium 200 MHz CPU, 32 MB RAM, 500 MB hard disk space. Windows 98 supports a wide range of hardware, but modern peripherals may not be compatible.
-    </p>
-  </section>
+  <main class="container mx-auto mt-10 px-4 flex-1">
+    <!-- Windows XP Section -->
+    <section class="mb-12">
+      <h2 class="text-3xl font-bold text-gray-800 mb-6">Windows XP</h2>
+      
+      <div class="md:flex md:items-start md:gap-8">
+        <!-- Video -->
+        <div class="md:w-1/2 mb-6 md:mb-0">
+          <!--
+            To use your own YouTube link:
+            - If your link is https://www.youtube.com/watch?v=VIDEO_ID
+            - Replace VIDEO_ID in the src and href below.
+          -->
+          <div class="w-full">
+            <iframe class="w-full aspect-video rounded-lg shadow-lg"
+                  src="https://www.youtube.com/embed/SXj95p4qVlI"
+                  title="Active Directory Overview"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen>
+          </iframe>
+          </div>
+        </div>
 
-  <!-- Legacy Software Section -->
-  <section>
-    <h2 class="text-2xl font-bold text-gray-800 mb-4">Legacy Software</h2>
-    <p class="text-gray-700">
-      Windows 98 is compatible with most Windows 95 applications, MS-DOS programs, and early multimedia software. It remains popular among retro computing enthusiasts and hobbyists testing old games and programs.
-    </p>
-  </section>
-</main>
+        <!-- Explanation / Your Notes -->
+        <div class="md:w-1/2 text-gray-700">
+          <h3 class="text-xl font-semibold mb-2">About Windows XP</h3>
+          <p class="mb-2">
+            <strong>Windows XP</strong> combined the stability of the Windows NT line with the usability of the Windows 9x series. It introduced a refreshed graphical interface, improved hardware support, and more robust user account management.
+          </p>
+          <p class="mb-2">
+            It became one of the most widely used desktop operating systems for many years, especially in homes, schools, and offices, thanks to its performance, compatibility, and ease of use.
+          </p>
+          <p class="mt-4 italic text-sm text-gray-500">
+            During the Windows XP installation, I configured the virtual machine and mounted the Windows XP ISO file. I followed the setup process, which included partitioning the disk, formatting it, and installing the system files. After the installation and restart, Windows XP started successfully.
+        </div>
+      </div>
+    </section>
 
-<footer class="bg-gray-900 text-gray-300 mt-16">
-  <div class="border-t border-gray-800 text-center py-4 text-sm">
-    © 2026 by Joseph Benjamin De Leon. All rights reserved.
-  </div>
-</footer>
+    <!-- System Requirements Section -->
+    <section class="mb-12">
+      <h3 class="text-2xl font-bold text-gray-800 mb-4">System Requirements</h3>
+      <p class="text-gray-700">
+        Typical minimum requirements for Windows XP include a 233 MHz processor, 64–128 MB of RAM, and at least 1.5 GB of available hard disk space. In a virtual machine, you can allocate more RAM and disk space for better responsiveness.
+      </p>
+    </section>
 
-  <!-- Footer -->
-  <footer class="bg-gray-900 text-gray-300 mt-16">
-    <div class="border-t border-gray-800 text-center py-4 text-sm">
-      © 2026 by Joseph Benjamin De Leon. All rights reserved.
-    </div>
-  </footer>
+    <!-- Lab Activity Section -->
+    <section class="mb-12">
+      <h3 class="text-2xl font-bold text-gray-800 mb-4">Laboratory Activity Notes</h3>
+      <p class="text-gray-700 mb-2">
+        The Windows XP installation process started by booting from the CD-ROM and loading the setup files. After accepting the license agreement, a partition was selected and formatted, preferably using NTFS. The system then copied the required files and restarted to continue the graphical installation phase. During this stage, regional settings, user information, and the product key were entered. The computer name, administrator password, and date and time settings were configured, followed by network setup and screen resolution adjustments to complete the installation.
+      </p>
+    </section>
+  </main>
 
+  <div id="footer"></div>
+
+  <script>
+    fetch("../footer.html")
+      .then(res => res.text())
+      .then(html => {
+        const footerContainer = document.getElementById("footer");
+        if (footerContainer) {
+          footerContainer.innerHTML = html;
+        }
+      })
+      .catch(() => {});
+  </script>
 </body>
 </html>

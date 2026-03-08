@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact - ITOS220-T: Operating Systems</title>
+  <link rel="icon" type="image/png" href="image.jpg">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 flex flex-col min-h-screen">
+
+  <header class="bg-white shadow-md">
+    <div class="container mx-auto flex items-center justify-between p-4">
+      <a href="index.html" class="text-sm text-blue-600 hover:underline">&larr; Back to Home</a>
+      <h1 class="text-lg font-semibold text-gray-800">Contact</h1>
+      <span class="text-xs text-gray-400">ITOS220-T</span>
+    </div>
+  </header>
+
+  <main class="container mx-auto mt-10 px-4 flex-1">
+    <section class="mb-12 max-w-2xl mx-auto">
+      <h2 class="text-3xl font-bold text-gray-800 mb-4">Get in touch</h2>
+      <p class="text-gray-700 mb-6">
+        Use the official communication channels provided by your institution to contact your instructor about this course and the laboratory activities.
+      </p>
+
+      <div class="bg-white rounded-lg shadow-sm border border-gray-100 p-6 space-y-4 text-sm text-gray-700">
+        <div>
+          <h3 class="text-base font-semibold text-gray-800 mb-1">Instructor contact</h3>
+          <p>
+            Check your syllabus or learning management system (LMS) for the instructor&apos;s name, email address, and consultation schedule.
+          </p>
+        </div>
+        <div>
+          <h3 class="text-base font-semibold text-gray-800 mb-1">Course announcements</h3>
+          <p>
+            All official announcements, schedule changes, and lab clarifications will be posted in your LMS or class messaging channel.
+          </p>
+        </div>
+        <div>
+          <h3 class="text-base font-semibold text-gray-800 mb-1">Technical support</h3>
+          <p>
+            For issues with virtual machines, software installation, or lab environment access, follow your school&apos;s IT helpdesk procedure.
+          </p>
+        </div>
+      </div>
+
+      <p class="text-sm text-gray-500 mt-6">
+        You can customize this page with specific email addresses, office hours, or links to contact forms if required by your course.
+      </p>
+    </section>
+  </main>
+
+  <div id="footer"></div>
+
+  <script>
+    fetch("footer.html")
+      .then(res => res.text())
+      .then(html => {
+        const footerContainer = document.getElementById("footer");
+        if (footerContainer) {
+          footerContainer.innerHTML = html;
+        }
+      })
+      .catch(() => {});
+  </script>
+</body>
+</html>

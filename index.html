@@ -11,94 +11,146 @@
 <body class="bg-gray-50 flex flex-col min-h-screen">
 
 <header class="bg-white shadow-md">
-<div class="container mx-auto flex items-center p-6">
+  <div class="container mx-auto flex items-center p-6">
+    <div class="text-xl font-bold text-gray-800">
+      ITOS220-T: Operating Systems
+    </div>
 
-<div class="text-xl font-bold text-gray-800">
-ITOS220-T: Operating Systems
-</div>
+    <!-- Desktop Navigation -->
+    <nav class="hidden lg:block ml-auto">
+      <ul class="flex items-center space-x-6 text-gray-700 font-medium">
+        <li><a href="#" class="hover:text-blue-600">Home</a></li>
 
-<nav class="hidden lg:block ml-auto">
-<ul class="flex items-center space-x-6 text-gray-700 font-medium">
+        <!-- Laboratory Activities (desktop) -->
+        <li class="relative">
+          <button id="lab-btn-desktop" class="flex items-center hover:text-blue-600">
+            Laboratory Activities
+            <svg id="lab-arrow-desktop" class="w-4 h-4 ml-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </button>
 
-<li><a href="#" class="hover:text-blue-600">Home</a></li>
-<li class="relative">
+          <!-- Dropdown -->
+          <div id="lab-menu-desktop" class="hidden absolute left-0 mt-2 w-72 bg-white border rounded-lg shadow-lg text-xs">
+            <!-- Windows List -->
+            <ul class="py-2 text-gray-700 max-h-80 overflow-y-auto">
+              <li><a href="LaboratoryAct/windows95.html" class="block px-5 py-2 hover:bg-gray-100">Windows 95</a></li>
+              <li><a href="LaboratoryAct/windowsnt4.html" class="block px-5 py-2 hover:bg-gray-100">Windows NT 4.0</a></li>
+              <li><a href="LaboratoryAct/windows98se.html" class="block px-5 py-2 hover:bg-gray-100">Windows 98 SE</a></li>
+              <li><a href="LaboratoryAct/windowsserver2000.html" class="block px-5 py-2 hover:bg-gray-100">Windows Server 2000</a></li>
+              <li><a href="LaboratoryAct/windowsme.html" class="block px-5 py-2 hover:bg-gray-100">Windows ME</a></li>
+              <li><a href="LaboratoryAct/windowsxp.html" class="block px-5 py-2 hover:bg-gray-100">Windows XP</a></li>
+              <li><a href="LaboratoryAct/windowsserver2003.html" class="block px-5 py-2 hover:bg-gray-100">Windows Server 2003</a></li>
+              <li><a href="LaboratoryAct/windowsvista.html" class="block px-5 py-2 hover:bg-gray-100">Windows Vista</a></li>
+              <li><a href="LaboratoryAct/windowsserver2008r2.html" class="block px-5 py-2 hover:bg-gray-100">Windows Server 2008 R2</a></li>
+              <li><a href="LaboratoryAct/windows7.html" class="block px-5 py-2 hover:bg-gray-100">Windows 7</a></li>
+              <li><a href="LaboratoryAct/windows8.html" class="block px-5 py-2 hover:bg-gray-100">Windows 8</a></li>
+              <li><a href="LaboratoryAct/windows10.html" class="block px-5 py-2 hover:bg-gray-100">Windows 10</a></li>
+              <li><a href="LaboratoryAct/windows11.html" class="block px-5 py-2 hover:bg-gray-100">Windows 11</a></li>
+            </ul>
 
-<button id="lab-btn-desktop" class="flex items-center hover:text-blue-600">
-Laboratory Activities
-<svg id="lab-arrow-desktop" class="w-4 h-4 ml-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-</svg>
-</button>
+            <div class="border-t"></div>
 
-<!-- Dropdown -->
-<div id="lab-menu-desktop" class="hidden absolute left-0 mt-2 w-72 bg-white border rounded-lg shadow-lg text-xs">
+            <!-- Other Activities -->
+            <ul class="py-2 text-gray-700">
+              <li><a href="LaboratoryAct/active_directory.html" class="block px-5 py-2 hover:bg-gray-100">Active Directory</a></li>
+              <li><a href="LaboratoryAct/dhcp.html" class="block px-5 py-2 hover:bg-gray-100">DHCP & Joining Workstations</a></li>
+              <li><a href="LaboratoryAct/group_policy.html" class="block px-5 py-2 hover:bg-gray-100">Group Policy Management</a></li>
+              <li><a href="LaboratoryAct/raid.html" class="block px-5 py-2 hover:bg-gray-100">RAID</a></li>
+              <li><a href="LaboratoryAct/file_services.html" class="block px-5 py-2 hover:bg-gray-100">File Services</a></li>
+            </ul>
+          </div>
+        </li>
 
-<!-- Windows List -->
-<ul class="py-2 text-gray-700">
+        <li><a href="#final-activity" class="hover:text-blue-600">Final Activity</a></li>
 
-<li><a href="LaboratoryAct/windows95.html" class="block px-5 py-2 hover:bg-gray-100">Windows 95</a></li>
-<li><a href="LaboratoryAct/windowsnt4.html" class="block px-5 py-2 hover:bg-gray-100">Windows NT 4.0</a></li>
-<li><a href="LaboratoryAct/windows98se.html" class="block px-5 py-2 hover:bg-gray-100">Windows 98 SE</a></li>
-<li><a href="LaboratoryAct/windows2000.html" class="block px-5 py-2 hover:bg-gray-100">Windows 2000</a></li>
-<li><a href="LaboratoryAct/windowsserver2000.html" class="block px-5 py-2 hover:bg-gray-100">Windows Server 2000</a></li>
-<li><a href="LaboratoryAct/windowsme.html" class="block px-5 py-2 hover:bg-gray-100">Windows ME</a></li>
-<li><a href="LaboratoryAct/windowsxp.html" class="block px-5 py-2 hover:bg-gray-100">Windows XP</a></li>
-<li><a href="LaboratoryAct/windowsserver2003.html" class="block px-5 py-2 hover:bg-gray-100">Windows Server 2003</a></li>
-<li><a href="LaboratoryAct/windowsvista.html" class="block px-5 py-2 hover:bg-gray-100">Windows Vista</a></li>
-<li><a href="LaboratoryAct/windowsserver2008r2.html" class="block px-5 py-2 hover:bg-gray-100">Windows Server 2008 R2</a></li>
-<li><a href="LaboratoryAct/windows7.html" class="block px-5 py-2 hover:bg-gray-100">Windows 7</a></li>
-<li><a href="LaboratoryAct/windows8.html" class="block px-5 py-2 hover:bg-gray-100">Windows 8</a></li>
-<li><a href="LaboratoryAct/windows10.html" class="block px-5 py-2 hover:bg-gray-100">Windows 10</a></li>
-<li><a href="LaboratoryAct/windows11.html" class="block px-5 py-2 hover:bg-gray-100">Windows 11</a></li>
+        <!-- About (desktop) -->
+        <li class="relative">
+          <button id="about-btn-desktop" class="flex items-center hover:text-blue-600">
+            About
+            <svg id="about-arrow-desktop" class="w-4 h-4 ml-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </button>
 
-</ul>
+          <div id="about-menu-desktop" class="hidden absolute right-0 mt-2 w-72 bg-white border rounded-lg shadow-lg text-xs">
+            <ul class="py-2 text-gray-700">
+              <li><a href="resources.html" class="block px-5 py-2 hover:bg-gray-100">Resources</a></li>
+              <li><a href="contact.html" class="block px-5 py-2 hover:bg-gray-100">Contact</a></li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </nav>
 
-<div class="border-t"></div>
+    <!-- Mobile menu button -->
+    <div class="ml-auto lg:hidden">
+      <button id="menu-btn-mobile" class="p-2 rounded-md hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+    </div>
+  </div>
 
-<!-- Other Activities -->
-<ul class="py-2 text-gray-700">
+  <!-- Mobile Navigation -->
+  <nav id="mobile-menu" class="lg:hidden hidden border-t border-gray-200 bg-white">
+    <div class="container mx-auto px-4 py-4 space-y-2 text-gray-700 text-sm">
+      <a href="#" class="block py-1 hover:text-blue-600">Home</a>
 
-<li><a href="LaboratoryAct/active_directory.html" class="block px-5 py-2 hover:bg-gray-100">Active Directory</a></li>
-<li><a href="LaboratoryAct/dhcp.html" class="block px-5 py-2 hover:bg-gray-100">DHCP & Joining Workstations</a></li>
-<li><a href="LaboratoryAct/group_policy.html" class="block px-5 py-2 hover:bg-gray-100">Group Policy Management</a></li>
-<li><a href="LaboratoryAct/raid.html" class="block px-5 py-2 hover:bg-gray-100">RAID</a></li>
-<li><a href="LaboratoryAct/file_services.html" class="block px-5 py-2 hover:bg-gray-100">File Services</a></li>
+      <!-- Laboratory Activities (mobile, simple list) -->
+      <details class="group">
+        <summary class="flex items-center justify-between cursor-pointer py-1 hover:text-blue-600">
+          <span>Laboratory Activities</span>
+          <span class="transition-transform group-open:rotate-180">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </span>
+        </summary>
+        <div class="mt-2 pl-3 space-y-1">
+          <p class="font-semibold text-xs text-gray-500 uppercase tracking-wide">Windows</p>
+          <a href="LaboratoryAct/windows95.html" class="block py-1 hover:text-blue-600">Windows 95</a>
+          <a href="LaboratoryAct/windowsnt4.html" class="block py-1 hover:text-blue-600">Windows NT 4.0</a>
+          <a href="LaboratoryAct/windows98se.html" class="block py-1 hover:text-blue-600">Windows 98 SE</a>
+          <a href="LaboratoryAct/windowsserver2000.html" class="block py-1 hover:text-blue-600">Windows Server 2000</a>
+          <a href="LaboratoryAct/windowsme.html" class="block py-1 hover:text-blue-600">Windows ME</a>
+          <a href="LaboratoryAct/windowsxp.html" class="block py-1 hover:text-blue-600">Windows XP</a>
+          <a href="LaboratoryAct/windowsserver2003.html" class="block py-1 hover:text-blue-600">Windows Server 2003</a>
+          <a href="LaboratoryAct/windowsvista.html" class="block py-1 hover:text-blue-600">Windows Vista</a>
+          <a href="LaboratoryAct/windowsserver2008r2.html" class="block py-1 hover:text-blue-600">Windows Server 2008 R2</a>
+          <a href="LaboratoryAct/windows7.html" class="block py-1 hover:text-blue-600">Windows 7</a>
+          <a href="LaboratoryAct/windows8.html" class="block py-1 hover:text-blue-600">Windows 8</a>
+          <a href="LaboratoryAct/windows10.html" class="block py-1 hover:text-blue-600">Windows 10</a>
+          <a href="LaboratoryAct/windows11.html" class="block py-1 hover:text-blue-600">Windows 11</a>
 
-</ul>
+          <p class="font-semibold text-xs text-gray-500 uppercase tracking-wide mt-3">Other Activities</p>
+          <a href="LaboratoryAct/active_directory.html" class="block py-1 hover:text-blue-600">Active Directory</a>
+          <a href="LaboratoryAct/dhcp.html" class="block py-1 hover:text-blue-600">DHCP & Joining Workstations</a>
+          <a href="LaboratoryAct/group_policy.html" class="block py-1 hover:text-blue-600">Group Policy Management</a>
+          <a href="LaboratoryAct/raid.html" class="block py-1 hover:text-blue-600">RAID</a>
+          <a href="LaboratoryAct/file_services.html" class="block py-1 hover:text-blue-600">File Services</a>
+        </div>
+      </details>
 
-</div>
-</li>
+      <a href="#final-activity" class="block py-1 hover:text-blue-600">Final Activity</a>
 
-<li><a href="#" class="hover:text-blue-600">Final Activity</a></li>
-<li class="relative">
-
-<button id="about-btn-desktop" class="flex items-center hover:text-blue-600">
-About
-<svg id="about-arrow-desktop" class="w-4 h-4 ml-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-</svg>
-</button>
-
-<div id="about-menu-desktop" class="hidden absolute right-0 mt-2 w-72 bg-white border rounded-lg shadow-lg text-xs">
-
-<ul class="py-2 text-gray-700">
-<li><a class="block px-5 py-2 hover:bg-gray-100">Resources</a></li>
-<li><a class="block px-5 py-2 hover:bg-gray-100">Contact</a></li>
-</ul>
-
-</div>
-
-</li>
-
-<div class="lg:hidden ml-auto">
-<button id="menu-btn-mobile">
-<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-</svg>
-</button>
-</div>
-
-</div>
+      <details class="group">
+        <summary class="flex items-center justify-between cursor-pointer py-1 hover:text-blue-600">
+          <span>About</span>
+          <span class="transition-transform group-open:rotate-180">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </span>
+        </summary>
+        <div class="mt-2 pl-3 space-y-1">
+          <a href="resources.html" class="block py-1 hover:text-blue-600">Resources</a>
+          <a href="contact.html" class="block py-1 hover:text-blue-600">Contact</a>
+        </div>
+      </details>
+    </div>
+  </nav>
 </header>
 
 <main class="container mx-auto mt-10 px-4">
@@ -136,52 +188,68 @@ About
 
   <!-- Virtual Machine Section -->
   <section class="mb-12">
-    <h2 class="text-2xl font-bold text-gray-800 mb-4">Virtual Machine</h2>
+    <h2 class="text-2xl font-bold text-gray-800 mb-4">Virtual Machines</h2>
+    <p class="text-gray-700 mb-3">
+      A <strong>virtual machine (VM)</strong> is a software-based simulation of a physical computer that runs an operating system and applications independently from the host machine. VMs are created using virtualization technology, allowing multiple operating systems to run on a single physical computer.
+    </p>
     <p class="text-gray-700">
-      A <strong>virtual machine (VM)</strong> is a software-based simulation of a physical computer that runs an operating system and applications independently from the host machine. VMs are created using virtualization technology, allowing multiple operating systems to run on a single physical computer. They provide flexibility, security, and resource efficiency, making them ideal for testing software, running legacy applications, and server consolidation.
+      In this course, you will use virtual machines to safely install, configure, and experiment with different versions of Microsoft Windows without risking your host operating system.
     </p>
   </section>
 
   <!-- VirtualBox Section -->
-  <section>
+  <section class="mb-12">
     <h2 class="text-2xl font-bold text-gray-800 mb-4">VirtualBox by Oracle</h2>
+    <p class="text-gray-700 mb-3">
+      <strong>VirtualBox</strong> is free and open-source virtualization software that allows you to run virtual machines on your computer. It supports multiple operating systems simultaneously, enabling you to test, develop, or run applications in isolated environments without affecting the host system.
+    </p>
     <p class="text-gray-700">
-      <strong>VirtualBox</strong> is free and open-source virtualization software that allows you to run virtual machines on your computer. It supports multiple operating systems simultaneously, enabling users to test, develop, or run applications in isolated environments without affecting the host system.
+      Your laboratory activities will typically start with creating a new virtual machine, attaching installation media, and then performing OS installation and configuration steps.
     </p>
   </section>
+
+  <!-- Final Activity Section -->
+  <section id="final-activity" class="mb-12">
+    <h2 class="text-2xl font-bold text-gray-800 mb-4">Final Activity</h2>
+    <p class="text-gray-700">
+      The final activity integrates concepts from all previous laboratory exercises. You will design and configure a small network using virtual machines, apply security best practices, and document your setup and troubleshooting steps.
+    </p>
+  </section>
+
 </main>
 
-<footer class="bg-gray-900 text-gray-300 mt-16">
-<div class="border-t border-gray-800 text-center py-4 text-sm">
-© 2026 by Joseph Benjamin De Leon. All rights reserved.
-</div>
-</footer>
+<div id="footer"></div>
 
 <script>
 
 const labBtnDesktop = document.getElementById('lab-btn-desktop');
 const labMenuDesktop = document.getElementById('lab-menu-desktop');
 const labArrowDesktop = document.getElementById('lab-arrow-desktop');
-
-labBtnDesktop.addEventListener('click', () => {
-
-labMenuDesktop.classList.toggle('hidden');
-labArrowDesktop.classList.toggle('rotate-180');
-
-
-
-});
-
 const aboutBtn = document.getElementById('about-btn-desktop');
 const aboutMenu = document.getElementById('about-menu-desktop');
 const aboutArrow = document.getElementById('about-arrow-desktop');
+const mobileMenuBtn = document.getElementById('menu-btn-mobile');
+const mobileMenu = document.getElementById('mobile-menu');
 
-aboutBtn.addEventListener('click', () => {
+if (labBtnDesktop && labMenuDesktop && labArrowDesktop) {
+  labBtnDesktop.addEventListener('click', () => {
+    labMenuDesktop.classList.toggle('hidden');
+    labArrowDesktop.classList.toggle('rotate-180');
+  });
+}
 
-aboutMenu.classList.toggle('hidden');
-aboutArrow.classList.toggle('rotate-180');
+if (aboutBtn && aboutMenu && aboutArrow) {
+  aboutBtn.addEventListener('click', () => {
+    aboutMenu.classList.toggle('hidden');
+    aboutArrow.classList.toggle('rotate-180');
+  });
+}
 
-});
+if (mobileMenuBtn && mobileMenu) {
+  mobileMenuBtn.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hidden');
+  });
+}
 
 </script>
 
@@ -189,7 +257,13 @@ aboutArrow.classList.toggle('rotate-180');
 fetch("footer.html")
   .then(res => res.text())
   .then(html => {
-    document.getElementById("footer").innerHTML = html;
+    const footerContainer = document.getElementById("footer");
+    if (footerContainer) {
+      footerContainer.innerHTML = html;
+    }
+  })
+  .catch(() => {
+    // Fail silently if footer cannot be loaded
   });
 </script>
 
