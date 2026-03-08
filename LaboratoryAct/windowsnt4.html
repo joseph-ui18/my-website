@@ -11,7 +11,7 @@
 
   <header class="bg-white shadow-md">
     <div class="container mx-auto flex items-center justify-between p-4">
-      <a href="../index.html" class="text-sm text-blue-600 hover:underline">&larr; Back to Home</a>
+      <a href="../index.html" class="back-to-home text-sm text-blue-600 hover:underline px-3 py-1.5 rounded-md hover:bg-blue-50">&larr; Back to Home</a>
       <h1 class="text-lg font-semibold text-gray-800">Laboratory Activity: Windows NT 4.0</h1>
       <span class="text-xs text-gray-400">ITOS220-T</span>
     </div>
@@ -71,6 +71,18 @@
   <div id="footer"></div>
 
   <script>
+    (function() {
+      document.addEventListener('DOMContentLoaded', function() {
+        var link = document.querySelector('a.back-to-home');
+        if (!link) return;
+        var path = window.location.pathname;
+        var parts = path.split('/').filter(Boolean);
+        parts.pop();
+        if (parts.length && parts[parts.length - 1] === 'LaboratoryAct') parts.pop();
+        var base = '/' + (parts.length ? parts.join('/') + '/' : '');
+        link.href = base + 'index.html';
+      });
+    })();
     fetch("../footer.html")
       .then(res => res.text())
       .then(html => {
