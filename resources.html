@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Resources - ITOS220-T: Operating Systems</title>
+  <title>Resources - Multimedia & Authoring</title>
   <link rel="icon" type="image/png" href="image.jpg">
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
@@ -13,7 +13,7 @@
     <div class="container mx-auto flex items-center justify-between p-4">
       <a href="index.html" class="back-to-home text-sm text-blue-600 hover:underline px-3 py-1.5 rounded-md hover:bg-blue-50">&larr; Back to Home</a>
       <h1 class="text-lg font-semibold text-gray-800">Course Resources</h1>
-      <span class="text-xs text-gray-400">ITOS220-T</span>
+      <span class="text-xs text-gray-400">Multimedia & Authoring</span>
     </div>
   </header>
 
@@ -21,43 +21,61 @@
     <section class="mb-12">
       <h2 class="text-3xl font-bold text-gray-800 mb-4">References & Materials</h2>
       <p class="text-gray-700 mb-4">
-        This page collects useful references and materials to help you complete the laboratory activities and better understand operating systems concepts.
+        This page contains useful resources to help you understand multimedia concepts
+        and complete your projects in video editing, graphics, animation, and authoring.
       </p>
+
       <div class="grid md:grid-cols-2 gap-8">
+
+        <!-- Software -->
         <div class="bg-white rounded-lg shadow-sm border border-gray-100 p-5">
-          <h3 class="text-xl font-semibold text-gray-800 mb-2">Official Documentation</h3>
+          <h3 class="text-xl font-semibold text-gray-800 mb-2">Multimedia Software</h3>
           <ul class="list-disc list-inside text-gray-700 space-y-1 text-sm">
-            <li>Microsoft Windows documentation</li>
-            <li>Windows Server documentation</li>
-            <li>Command-line and PowerShell references</li>
+            <li>Video editing tools (CapCut, Premiere Pro, DaVinci Resolve)</li>
+            <li>Graphic design tools (Photoshop, Canva)</li>
+            <li>Audio editing tools (Audacity)</li>
+            <li>Animation tools (Blender, Adobe Animate)</li>
           </ul>
         </div>
+
+        <!-- Tutorials -->
         <div class="bg-white rounded-lg shadow-sm border border-gray-100 p-5">
-          <h3 class="text-xl font-semibold text-gray-800 mb-2">Virtualization</h3>
+          <h3 class="text-xl font-semibold text-gray-800 mb-2">Tutorials & Guides</h3>
           <ul class="list-disc list-inside text-gray-700 space-y-1 text-sm">
-            <li>Oracle VirtualBox user manual</li>
-            <li>Guides for creating and managing virtual machines</li>
-            <li>Best practices for snapshots and backups</li>
+            <li>Beginner guides for video editing</li>
+            <li>Graphic design principles and tutorials</li>
+            <li>Animation basics and techniques</li>
+            <li>Step-by-step multimedia project guides</li>
           </ul>
         </div>
+
+        <!-- Course Materials -->
         <div class="bg-white rounded-lg shadow-sm border border-gray-100 p-5">
           <h3 class="text-xl font-semibold text-gray-800 mb-2">Course Materials</h3>
           <ul class="list-disc list-inside text-gray-700 space-y-1 text-sm">
-            <li>Course handouts and laboratory guides</li>
-            <li>Sample configuration screenshots</li>
-            <li>Checklists for each laboratory activity</li>
+            <li>Lecture notes and handouts</li>
+            <li>Sample multimedia projects</li>
+            <li>Design templates and assets</li>
+            <li>Project rubrics and checklists</li>
           </ul>
         </div>
+
+        <!-- Multimedia Content -->
         <div class="bg-white rounded-lg shadow-sm border border-gray-100 p-5">
-          <h3 class="text-xl font-semibold text-gray-800 mb-2">Multimedia</h3>
+          <h3 class="text-xl font-semibold text-gray-800 mb-2">Multimedia References</h3>
           <ul class="list-disc list-inside text-gray-700 space-y-1 text-sm">
-            <li>Instructor-provided video demonstrations</li>
-            <li>Recommended explainer videos on operating systems</li>
+            <li>Educational YouTube tutorials</li>
+            <li>Stock images and videos (free resources)</li>
+            <li>Sound effects and background music libraries</li>
+            <li>Inspiration from professional projects</li>
           </ul>
         </div>
+
       </div>
+
       <p class="text-sm text-gray-500 mt-6">
-        You can customize this page by adding direct links to the specific resources used in your course (LMS pages, PDFs, videos, etc.).
+        You can enhance this page by adding direct links to your tools, tutorials,
+        or downloadable assets used in your multimedia projects.
       </p>
     </section>
   </main>
@@ -77,6 +95,7 @@
         link.href = base + 'index.html';
       });
     })();
+
     fetch("footer.html")
       .then(res => res.text())
       .then(html => {
@@ -87,5 +106,6 @@
       })
       .catch(() => {});
   </script>
+
 </body>
 </html>
