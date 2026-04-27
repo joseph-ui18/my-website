@@ -22,10 +22,10 @@
 
         <!-- Laboratory Activities -->
         <li class="relative">
-  <button id="lab-btn-desktop"
+<button id="lab-btn-desktop" type="button"
     class="flex items-center gap-1 px-3 py-2 rounded-md hover:bg-gray-100 hover:text-blue-600 transition">
     
-    Rotoscoping
+    Laboratory Activities
 
     <svg id="lab-arrow-desktop"
       class="w-4 h-4 transition-transform duration-200"
@@ -37,22 +37,22 @@
 
   <!-- Dropdown -->
   <div id="lab-menu-desktop"
-    class="hidden absolute left-0 mt-2 w-64 bg-white border border-gray-200 rounded-xl shadow-xl overflow-hidden transform scale-95 opacity-0 transition-all duration-200">
+    class="hidden absolute left-0 mt-2 w-64 bg-white border border-gray-200 rounded-xl shadow-xl overflow-hidden transition-all duration-200">
 
     <ul class="text-sm text-gray-700 max-h-80 overflow-y-auto">
-      <li><a href="introduction.html" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-600">Introduction</a></li>
-      <li><a href="videoediting.html" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-600">Video Editing</a></li>
-      <li><a href="advancedvideoediting.html" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-600">Advanced Editing</a></li>
-      <li><a href="audioediting.html" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-600">Audio Editing</a></li>
-      <li><a href="graphicsdesign.html" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-600">Graphics Design</a></li>
-      <li><a href="animationbasics.html" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-600">Animation</a></li>
-      <li><a href="authoringtools.html" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-600">Authoring Tools</a></li>
-      <li><a href="multimediaproject.html" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-600">Project</a></li>
+      <li><a href="LaboratoryAct/introduction.html" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-600">Introduction</a></li>
+      <li><a href="LaboratoryAct/videoediting.html" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-600">Video Editing</a></li>
+      <li><a href="LaboratoryAct/advancevideoediting.html" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-600">Advanced Editing</a></li>
+      <li><a href="LaboratoryAct/audioediting.html" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-600">Audio Editing</a></li>
+      <li><a href="LaboratoryAct/graphicdesign.html" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-600">Graphics Design</a></li>
+      <li><a href="LaboratoryAct/animationbasics.html" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-600">Animation</a></li>
+      <li><a href="LaboratoryAct/authoringtools.html" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-600">Authoring Tools</a></li>
+      <li><a href="LaboratoryAct/multimediaproject.html" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-600">Project</a></li>
     </ul>
   </div>
 </li>
 
-        <li><a href="finalact.html" class="hover:text-blue-600">Final Activity</a></li>
+        <li><a href="finalact.html" class="hover:text-blue-600">Rotoscope Progress</a></li>
 
         <!-- About -->
         <li class="relative">
@@ -84,8 +84,15 @@
   <nav id="mobile-menu" class="lg:hidden hidden border-t bg-white">
     <div class="container mx-auto px-4 py-4 space-y-2 text-sm">
       <a href="index.html" class="home-link block hover:text-blue-600">Home</a>
-      <a href="#" class="block hover:text-blue-600">Multimedia Lessons</a>
-      <a href="finalact.html" class="block hover:text-blue-600">Final Activity</a>
+      <a href="LaboratoryAct/introduction.html" class="block hover:text-blue-600">Introduction</a>
+      <a href="LaboratoryAct/videoediting.html" class="block hover:text-blue-600">Video Editing</a>
+      <a href="LaboratoryAct/advancevideoediting.html" class="block hover:text-blue-600">Advanced Editing</a>
+      <a href="LaboratoryAct/audioediting.html" class="block hover:text-blue-600">Audio Editing</a>
+      <a href="LaboratoryAct/graphicdesign.html" class="block hover:text-blue-600">Graphics Design</a>
+      <a href="LaboratoryAct/animationbasics.html" class="block hover:text-blue-600">Animation</a>
+      <a href="LaboratoryAct/authoringtools.html" class="block hover:text-blue-600">Authoring Tools</a>
+      <a href="LaboratoryAct/multimediaproject.html" class="block hover:text-blue-600">Project</a>
+      <a href="finalact.html" class="block hover:text-blue-600">Rotoscope Progress</a>
     </div>
   </nav>
 </header>
@@ -99,7 +106,7 @@
     <div class="md:flex md:gap-8">
       <div class="md:w-1/2 mb-6">
         <iframe class="w-full h-64 md:h-80 rounded-lg shadow-lg"
-        src="https://www.youtube.com/embed/7xC3bW9Z8FQ"
+        src="https://www.youtube.com/embed/b9FIFSqb8u0"
         allowfullscreen></iframe>
       </div>
 
@@ -185,13 +192,36 @@ document.getElementById('menu-btn-mobile').onclick = () => {
 const labBtnDesktop = document.getElementById('lab-btn-desktop');
 const labMenuDesktop = document.getElementById('lab-menu-desktop');
 const labArrowDesktop = document.getElementById('lab-arrow-desktop');
+const aboutBtnDesktop = document.getElementById('about-btn-desktop');
+const aboutMenuDesktop = document.getElementById('about-menu-desktop');
+const aboutArrowDesktop = document.getElementById('about-arrow-desktop');
 
 if (labBtnDesktop && labMenuDesktop && labArrowDesktop) {
-  labBtnDesktop.onclick = () => {
+  labBtnDesktop.onclick = (event) => {
+    event.stopPropagation();
     labMenuDesktop.classList.toggle('hidden');
     labArrowDesktop.classList.toggle('rotate-180');
+    if (aboutMenuDesktop) aboutMenuDesktop.classList.add('hidden');
+    if (aboutArrowDesktop) aboutArrowDesktop.classList.remove('rotate-180');
   };
 }
+
+if (aboutBtnDesktop && aboutMenuDesktop && aboutArrowDesktop) {
+  aboutBtnDesktop.onclick = (event) => {
+    event.stopPropagation();
+    aboutMenuDesktop.classList.toggle('hidden');
+    aboutArrowDesktop.classList.toggle('rotate-180');
+    if (labMenuDesktop) labMenuDesktop.classList.add('hidden');
+    if (labArrowDesktop) labArrowDesktop.classList.remove('rotate-180');
+  };
+}
+
+document.addEventListener('click', () => {
+  if (labMenuDesktop) labMenuDesktop.classList.add('hidden');
+  if (labArrowDesktop) labArrowDesktop.classList.remove('rotate-180');
+  if (aboutMenuDesktop) aboutMenuDesktop.classList.add('hidden');
+  if (aboutArrowDesktop) aboutArrowDesktop.classList.remove('rotate-180');
+});
 </script>
 
 </body>
