@@ -1,126 +1,149 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Progress - Multimedia & Authoring</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            background: #f4f6f9;
-        }
-
-        header {
-            background: #1f2937;
-            color: white;
-            padding: 15px 30px;
-            display: flex;
-            justify-content: space-between;
-        }
-
-        header a {
-            color: white;
-            margin-left: 20px;
-            text-decoration: none;
-        }
-
-        .container {
-            display: flex;
-            padding: 20px;
-        }
-
-        .sidebar {
-            width: 250px;
-            background: #e5e7eb;
-            border-radius: 10px;
-            padding: 10px;
-        }
-
-        .sidebar h3 {
-            background: #1f2937;
-            color: white;
-            padding: 10px;
-            border-radius: 8px;
-        }
-
-        .sidebar a {
-            display: block;
-            padding: 10px;
-            color: black;
-            text-decoration: none;
-            border-bottom: 1px solid #ccc;
-        }
-
-        .sidebar a:hover {
-            background: #d1d5db;
-        }
-
-        .content {
-            flex: 1;
-            margin-left: 20px;
-        }
-
-        .card {
-            background: #1f2937;
-            color: white;
-            padding: 15px;
-            border-radius: 10px;
-            margin-bottom: 20px;
-        }
-
-        iframe {
-            width: 100%;
-            height: 400px;
-            border-radius: 10px;
-        }
-
-        .section {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            margin-top: 15px;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rotoscope Progress - Multimedia & Authoring</title>
+<link rel="icon" type="image/png" href="image.jpg">
+<script src="https://cdn.tailwindcss.com"></script>
 </head>
+<body class="bg-gray-50 flex flex-col min-h-screen">
 
-<body>
+<header class="bg-white shadow-md">
+  <div class="container mx-auto flex items-center p-6">
+    <div class="text-xl font-bold text-gray-800">Multimedia & Authoring</div>
 
-<header>
-    <h2>Multimedia & Authoring</h2>
-    <div>
-        <a href="index.html">Home</a>
+    <nav class="hidden lg:block ml-auto">
+      <ul class="flex items-center space-x-6 text-gray-700 font-medium">
+        <li><a href="index.html" class="home-link hover:text-blue-600">Home</a></li>
+        <li><a href="finalact.html" class="hover:text-blue-600">Rotoscope</a></li>
+        <li><a href="solarSystem.html" class="hover:text-blue-600">Solar System</a></li>
+
+        <li class="relative">
+          <button id="about-btn-desktop" class="flex items-center hover:text-blue-600">
+            About
+            <svg id="about-arrow-desktop" class="w-4 h-4 ml-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </button>
+          <div id="about-menu-desktop" class="hidden absolute right-0 mt-2 w-72 bg-white border rounded-lg shadow-lg text-xs">
+            <ul class="py-2 text-gray-700">
+              <li><a href="resources.html" class="block px-4 py-2 hover:bg-gray-100">Resources</a></li>
+              <li><a href="contact.html" class="block px-4 py-2 hover:bg-gray-100">Contact</a></li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="ml-auto lg:hidden">
+      <button id="menu-btn-mobile" class="p-2 rounded-md hover:bg-gray-100">☰</button>
     </div>
+  </div>
+
+  <nav id="mobile-menu" class="lg:hidden hidden border-t bg-white">
+    <div class="container mx-auto px-4 py-4 space-y-2 text-sm">
+      <a href="index.html" class="home-link block hover:text-blue-600">Home</a>
+      <a href="finalact.html" class="block hover:text-blue-600">Rotoscope Progress</a>
+      <a href="solarSystem.html" class="block hover:text-blue-600">Solar System</a>
+      <a href="resources.html" class="block hover:text-blue-600">Resources</a>
+      <a href="contact.html" class="block hover:text-blue-600">Contact</a>
+    </div>
+  </nav>
 </header>
 
-<div class="container">
+<main class="container mx-auto mt-10 px-4 pb-12">
+  <section class="mb-10">
+    <h1 class="text-3xl font-bold text-gray-800 mb-4">Rotoscope Progress</h1>
+    <p class="text-gray-700 max-w-3xl">Follow the progress videos and learn the steps used to build the rotoscope project.</p>
+  </section>
 
-    <!-- Sidebar -->
-    <div class="sidebar">
-        <h3>Progress</h3>
-        <a href="#progress">Progress 1–14</a>
+  <div class="grid gap-8 lg:grid-cols-[1fr_320px]">
+    <div>
+      <section class="mb-10">
+        <h2 class="text-2xl font-semibold text-gray-800 mb-4">Reference Video</h2>
+        <div class="aspect-video w-full rounded-xl overflow-hidden shadow-lg">
+          <iframe class="w-full h-full" src="https://www.youtube.com/embed/1i_ufoq8NcE?si" title="Rotoscope Reference Video" allowfullscreen></iframe>
+        </div>
+      </section>
+
+      <section class="mb-10">
+        <h2 class="text-2xl font-semibold text-gray-800 mb-4">Progress 1</h2>
+        <div class="aspect-video w-full rounded-xl overflow-hidden shadow-lg">
+          <iframe class="w-full h-full" src="https://www.youtube.com/embed/U8nOX3wRjHM?si" title="Rotoscope Progress 1" allowfullscreen></iframe>
+        </div>
+      </section>
+
+      <section class="mb-10">
+        <h2 class="text-2xl font-semibold text-gray-800 mb-4">Progress 2</h2>
+        <div class="aspect-video w-full rounded-xl overflow-hidden shadow-lg">
+          <iframe class="w-full h-full" src="https://www.youtube.com/embed/Dc6hu0Npidk?si" title="Rotoscope Progress 2" allowfullscreen></iframe>
+        </div>
+      </section>
+
+    <section class="mb-10">
+        <h2 class="text-2xl font-semibold text-gray-800 mb-4">Progress 3</h2>
+        <div class="aspect-video w-full rounded-xl overflow-hidden shadow-lg">
+          <iframe class="w-full h-full" src="https://www.youtube.com/embed/q9ExwQW5C_c?si" title="Rotoscope Progress 3" allowfullscreen></iframe>
+        </div>
+      </section>
+    
+    <section class="mb-10">
+        <h2 class="text-2xl font-semibold text-gray-800 mb-4">Progress 4</h2>
+        <div class="aspect-video w-full rounded-xl overflow-hidden shadow-lg">
+          <iframe class="w-full h-full" src="https://www.youtube.com/embed/qJEOfm2Zbzg?si" title="Rotoscope Progress 4" allowfullscreen></iframe>
+        </div>
+      </section>
     </div>
 
-    <!-- Content -->
-    <div class="content">
+    <aside class="space-y-6">
+      <div class="rounded-xl bg-white border p-6 shadow-sm">
+        <h2 class="text-2xl font-semibold text-gray-800 mb-4">Progress Guide</h2>
+        <p class="text-gray-700 leading-7 mb-4">Use the videos to review each stage of the rotoscoping workflow. Start with the reference video, then continue through the progress clips.</p>
+        <ul class="space-y-3 text-gray-700">
+          <li class="rounded-lg border border-gray-200 p-4">Progress 1: Initial tracing and motion setup.</li>
+          <li class="rounded-lg border border-gray-200 p-4">Progress 2: Refining outlines and adding details.</li>
+          <li class="rounded-lg border border-gray-200 p-4">Progress 3: Enhancing textures and lighting.</li>
+          <li class="rounded-lg border border-gray-200 p-4">Progress 4: Final touches and rendering.</li>
+        </ul>
+      </div>
 
-        <!-- Title -->
-        <div class="card">
-            <h2>Reference Video</h2>
-            <iframe src="https://www.youtube.com/embed/1i_ufoq8NcE?si" allowfullscreen></iframe>
-        </div>
+      <div class="rounded-xl bg-white border p-6 shadow-sm">
+        <h2 class="text-2xl font-semibold text-gray-800 mb-4">Next Steps</h2>
+        <p class="text-gray-700 leading-7">Continue the project by adding more progress videos, notes, and final presentation details as you build toward completion.</p>
+      </div>
+    </aside>
+  </div>
+</main>
 
-        <div class="section" id="progress1">
-            <h3>Progress 1</h3>
-            <iframe src="https://www.youtube.com/embed/U8nOX3wRjHM?si" allowfullscreen></iframe>
-        </div>
+<div id="footer"></div>
 
-        <div class="section" id="progress2">
-            <h3>Progress 2</h3>
-            <iframe src="https://www.youtube.com/embed/Dc6hu0Npidk?si" allowfullscreen></iframe>
-        </div>
+<script>
+const menuBtnMobile = document.getElementById('menu-btn-mobile');
+if (menuBtnMobile) {
+  menuBtnMobile.onclick = () => {
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (mobileMenu) mobileMenu.classList.toggle('hidden');
+  };
+}
 
-    </div>
-</div>
+const aboutBtnDesktop = document.getElementById('about-btn-desktop');
+const aboutMenuDesktop = document.getElementById('about-menu-desktop');
+const aboutArrowDesktop = document.getElementById('about-arrow-desktop');
+
+if (aboutBtnDesktop && aboutMenuDesktop && aboutArrowDesktop) {
+  aboutBtnDesktop.onclick = (event) => {
+    event.stopPropagation();
+    aboutMenuDesktop.classList.toggle('hidden');
+    aboutArrowDesktop.classList.toggle('rotate-180');
+  };
+}
+
+document.addEventListener('click', () => {
+  if (aboutMenuDesktop) aboutMenuDesktop.classList.add('hidden');
+  if (aboutArrowDesktop) aboutArrowDesktop.classList.remove('rotate-180');
+});
+</script>
 
 </body>
 </html>

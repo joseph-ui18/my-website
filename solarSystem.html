@@ -1,0 +1,660 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Solar System</title>
+<link rel="icon" type="image/png" href="image.jpg">
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 flex flex-col min-h-screen">
+
+<header class="bg-white shadow-md">
+  <div class="container mx-auto flex items-center p-6">
+    <div class="text-xl font-bold text-gray-800">
+      Multimedia & Authoring
+    </div>
+
+    <!-- Desktop Navigation -->
+    <nav class="hidden lg:block ml-auto">
+      <ul class="flex items-center space-x-6 text-gray-700 font-medium">
+        <li><a href="index.html" class="home-link hover:text-blue-600">Home</a></li>
+        <li><a href="finalact.html" class="hover:text-blue-600">Rotoscope</a></li>
+        <li><a href="solarSystem.html" class="hover:text-blue-600">Solar System</a></li>
+
+        <!-- About -->
+        <li class="relative">
+          <button id="about-btn-desktop" class="flex items-center hover:text-blue-600">
+            About
+            <svg id="about-arrow-desktop" class="w-4 h-4 ml-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </button>
+
+          <div id="about-menu-desktop" class="hidden absolute right-0 mt-2 w-72 bg-white border rounded-lg shadow-lg text-xs">
+            <ul class="py-2 text-gray-700">
+              <li><a href="resources.html" class="block px-4 py-2 hover:bg-gray-100">Resources</a></li>
+              <li><a href="contact.html" class="block px-4 py-2 hover:bg-gray-100">Contact</a></li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Mobile menu -->
+    <div class="ml-auto lg:hidden">
+      <button id="menu-btn-mobile" class="p-2 rounded-md hover:bg-gray-100">
+        ☰
+      </button>
+    </div>
+  </div>
+
+  <nav id="mobile-menu" class="lg:hidden hidden border-t bg-white">
+    <div class="container mx-auto px-4 py-4 space-y-2 text-sm">
+      <a href="index.html" class="home-link block hover:text-blue-600">Home</a>
+      <a href="finalact.html" class="block hover:text-blue-600">Rotoscope Progress</a>
+      <a href="solarSystem.html" class="block hover:text-blue-600">Solar System</a>
+    </div>
+  </nav>
+</header>
+
+<main class="container mx-auto mt-10 px-4 pb-12">
+  <section class="mb-10">
+    <h1 class="text-3xl font-bold text-gray-800 mb-4">Solar System</h1>
+    <p class="text-gray-700 max-w-3xl">
+      Explore the Solar System project with video, explanation, method, an interactive Earth age calculator, and a script section for your final write-up.
+    </p>
+  </section>
+
+  <section class="mb-10">
+    <h2 class="text-2xl font-semibold text-gray-800 mb-4">Video</h2>
+    <div class="aspect-video w-full rounded-xl overflow-hidden shadow-lg">
+      <iframe class="w-full h-full" src="https://www.youtube.com/embed/TW3pnyg_NG8?si" title="Solar System Video" allowfullscreen></iframe>
+    </div>
+  </section>
+
+  <section class="mb-10">
+    <h2 class="text-2xl font-semibold text-gray-800 mb-4">Description</h2>
+    <p class="text-gray-700 leading-7">
+      This Solar System project introduces the planets, moons, and basic space science concepts. It explains how the system is organized, how the planets move, and what makes Earth unique among the planets.
+    </p>
+  </section>
+
+  <section class="mb-10">
+  <h2 class="text-2xl font-semibold text-gray-800 mb-4">Method</h2>
+
+  <div class="space-y-6 text-gray-700 leading-7">
+
+    <div class="rounded-xl bg-white border p-6 shadow-sm">
+      <h3 class="text-lg font-semibold text-gray-900 mb-2">Step 1: Download Textures</h3>
+      <p>
+        Go to solarsystemscope.com/textures and download all required texture files. Save them in one folder
+        (e.g. C:/Users/Joseph/Downloads/textures/).
+      </p>
+    </div>
+
+    <div class="rounded-xl bg-white border p-6 shadow-sm">
+      <h3 class="text-lg font-semibold text-gray-900 mb-2">Step 2: Set Up Blender</h3>
+      <p>
+        1. Open Blender<br>
+        2. Go to the Scripting tab<br>
+        3. Click New to create a script<br>
+        4. Paste the Python script into the editor<br>
+        5. Update texture path:
+        <br><code>TEX = "C:/Users/Joseph/Downloads/textures/"</code>
+      </p>
+    </div>
+
+    <div class="rounded-xl bg-white border p-6 shadow-sm">
+      <h3 class="text-lg font-semibold text-gray-900 mb-2">Step 3: Run the Script</h3>
+      <p>
+        1. Click Run Script or press Alt + P<br>
+        2. Wait for “Done!” message<br>
+        3. The scene will generate planets, Sun, Moon, rings, and stars
+      </p>
+    </div>
+
+    <div class="rounded-xl bg-white border p-6 shadow-sm">
+      <h3 class="text-lg font-semibold text-gray-900 mb-2">Step 4: Check the Scene</h3>
+      <p>
+        1. Press Numpad 0 for camera view<br>
+        2. Press Space to preview animation<br>
+        3. Verify all planets are visible and moving
+      </p>
+    </div>
+
+    <div class="rounded-xl bg-white border p-6 shadow-sm">
+      <h3 class="text-lg font-semibold text-gray-900 mb-2">Step 5: Render the Animation</h3>
+      <p>
+        1. Go to Render menu<br>
+        2. Click Render Animation or Ctrl + F12<br>
+        3. Blender renders 250 PNG frames<br>
+        4. Wait for rendering to finish
+      </p>
+    </div>
+
+    <div class="rounded-xl bg-white border p-6 shadow-sm">
+      <h3 class="text-lg font-semibold text-gray-900 mb-2">Step 6: Find Rendered Frames</h3>
+      <p>
+        Default location: <code>C:\tmp\</code><br>
+        Files: 0001.png to 0250.png<br><br>
+        If missing:<br>
+        1. Go to Properties → Output tab<br>
+        2. Check Output Path
+      </p>
+    </div>
+
+    <div class="rounded-xl bg-white border p-6 shadow-sm">
+      <h3 class="text-lg font-semibold text-gray-900 mb-2">Step 7: Convert to Video (FFmpeg)</h3>
+      <p>
+        Run this command in Command Prompt:
+      </p>
+      <pre class="bg-gray-100 p-3 rounded-md overflow-x-auto text-sm">
+ffmpeg -framerate 24 -i "C:/tmp/%04d.png" -c:v libx264 -pix_fmt yuv420p "C:/Users/Joseph/OneDrive/Desktop/solar_system.mp4"
+      </pre>
+    </div>
+
+  </div>
+</section>
+
+  <section class="mb-10 bg-white rounded-xl shadow-sm border p-6">
+  <h2 class="text-2xl font-semibold text-gray-800 mb-4">
+    Earth Age Calculator
+  </h2>
+
+  <p class="text-gray-600 mb-6">
+    Enter your Earth age and select a planet.
+  </p>
+
+  <div class="grid md:grid-cols-2 gap-6">
+
+    <!-- LEFT SIDE -->
+    <div>
+      <input id="earth-age-input"
+        type="number"
+        placeholder="Enter Earth age"
+        class="w-full border rounded-lg px-4 py-3 mb-4 focus:ring-2 focus:ring-blue-300 outline-none">
+
+      <button id="calculate-age-btn"
+        class="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700">
+        Calculate
+      </button>
+
+      <!-- PLANET LIST (CLICKABLE) -->
+      <ul class="mt-6 space-y-2 text-gray-700 cursor-pointer" id="planet-list">
+        <li data-planet="Mercury" class="border-b py-1 hover:text-blue-600">Mercury</li>
+        <li data-planet="Venus" class="border-b py-1 hover:text-blue-600">Venus</li>
+        <li data-planet="Earth" class="border-b py-1 hover:text-blue-600">Earth</li>
+        <li data-planet="Mars" class="border-b py-1 hover:text-blue-600">Mars</li>
+        <li data-planet="Jupiter" class="border-b py-1 hover:text-blue-600">Jupiter</li>
+        <li data-planet="Saturn" class="border-b py-1 hover:text-blue-600">Saturn</li>
+        <li data-planet="Uranus" class="border-b py-1 hover:text-blue-600">Uranus</li>
+        <li data-planet="Neptune" class="border-b py-1 hover:text-blue-600">Neptune</li>
+        <li data-planet="Pluto" class="py-1 hover:text-blue-600">Pluto</li>
+      </ul>
+    </div>
+
+    <!-- RIGHT SIDE (DYNAMIC DISPLAY) -->
+    <div class="border rounded-xl p-4">
+
+      <img id="planet-img"
+        src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Nh-pluto-in-true-color_2x_JPEG-edit-frame.jpg"
+        class="rounded-lg w-full mb-4">
+
+      <h3 id="planet-name" class="text-xl font-semibold mb-2">Pluto</h3>
+
+      <p id="planet-desc" class="text-gray-600 text-sm mb-4">
+        Click a planet to view details.
+      </p>
+
+      <div id="planet-info" class="text-sm text-gray-700 space-y-1"></div>
+
+      <div id="planet-age-result" class="mt-4 text-blue-600 font-semibold"></div>
+
+    </div>
+
+  </div>
+</section>
+    <div id="planet-age-results" class="mt-6 grid gap-3 text-gray-700"></div>
+
+    <div class="mt-10 space-y-8">
+      <div class="rounded-xl bg-gray-50 border border-gray-200 p-6">
+        <h3 class="text-xl font-semibold text-gray-900 mb-3">Sun</h3>
+        <p class="text-gray-700 mb-4">The Sun is the star at the centre of our solar system. It is an almost perfect sphere of super-hot gases whose gravity holds the solar system together. The energy produced by the Sun is essential for life on Earth and is a driving force behind the Earth's weather.</p>
+        <div class="grid gap-2 sm:grid-cols-2 text-sm text-gray-700">
+          <div>Age: 4.6 Billion Years</div>
+          <div>Type: Yellow Dwarf (G2V)</div>
+          <div>Diameter: 1,392,684 km</div>
+          <div>Equatorial Circumference: 4,370,005.6 km</div>
+          <div>Mass: 1.99 × 10^30 kg (333,060 Earths)</div>
+          <div>Surface Temperature: 5,500 °C</div>
+        </div>
+      </div>
+
+      <div class="rounded-xl bg-gray-50 border border-gray-200 p-6">
+        <h3 class="text-xl font-semibold text-gray-900 mb-3">Mercury</h3>
+        <p class="text-gray-700 mb-4">Mercury is the closest planet to the Sun and due to its proximity it is not easily seen except during twilight. For every two orbits of the Sun, Mercury completes three rotations about its axis and up until 1965 it was thought that the same side of Mercury constantly faced the Sun.</p>
+        <div class="grid gap-2 sm:grid-cols-2 text-sm text-gray-700">
+          <div>Diameter: 4,879 km</div>
+          <div>Mass: 3.29 × 10^23 kg (0.06 Earths)</div>
+          <div>Moons: None</div>
+          <div>Orbit Distance: 57,909,227 km (0.39 AU)</div>
+          <div>Orbit Period: 88 days</div>
+          <div>Surface Temperature: -173 to 427 °C</div>
+        </div>
+      </div>
+
+      <div class="rounded-xl bg-gray-50 border border-gray-200 p-6">
+        <h3 class="text-xl font-semibold text-gray-900 mb-3">Venus</h3>
+        <p class="text-gray-700 mb-4">Venus is the second planet from the Sun and is the second largest terrestrial planet. Venus is sometimes referred to as the Earth's sister planet due to their similar size and mass. Venus is named after the Roman goddess of love and beauty.</p>
+        <div class="grid gap-2 sm:grid-cols-2 text-sm text-gray-700">
+          <div>Diameter: 12,104 km</div>
+          <div>Mass: 4.87 × 10^24 kg (0.82 Earths)</div>
+          <div>Moons: None</div>
+          <div>Orbit Distance: 108,209,475 km (0.73 AU)</div>
+          <div>Orbit Period: 225 days</div>
+          <div>Surface Temperature: 462 °C</div>
+        </div>
+      </div>
+
+      <div class="rounded-xl bg-gray-50 border border-gray-200 p-6">
+        <h3 class="text-xl font-semibold text-gray-900 mb-3">Earth</h3>
+        <p class="text-gray-700 mb-4">Earth is the third planet from the Sun and is the largest of the terrestrial planets. The Earth is the only planet in our solar system not to be named after a Greek or Roman deity. The Earth was formed approximately 4.54 billion years ago and is the only known planet to support life.</p>
+        <div class="grid gap-2 sm:grid-cols-2 text-sm text-gray-700">
+          <div>Equatorial Diameter: 12,756 km</div>
+          <div>Polar Diameter: 12,714 km</div>
+          <div>Mass: 5.97 × 10^24 kg</div>
+          <div>Moons: 1 (The Moon)</div>
+          <div>Orbit Distance: 149,598,262 km (1 AU)</div>
+          <div>Orbit Period: 365.24 days</div>
+          <div>Surface Temperature: -88 to 58 °C</div>
+        </div>
+      </div>
+
+      <div class="rounded-xl bg-gray-50 border border-gray-200 p-6">
+        <h3 class="text-xl font-semibold text-gray-900 mb-3">Moon</h3>
+        <p class="text-gray-700 mb-4">The Moon is Earth's only natural satellite and the fifth largest moon in the solar system. It is the largest and most massive satellite relative to its parent planet and has a significant effect on Earth's tides and axial tilt.</p>
+        <div class="grid gap-2 sm:grid-cols-2 text-sm text-gray-700">
+          <div>Diameter: 3,475 km</div>
+          <div>Mass: 7.35 × 10^22 kg (0.01 Earths)</div>
+          <div>Orbits: The Earth</div>
+          <div>Orbit Distance: 384,400 km</div>
+          <div>Orbit Period: 27.3 days</div>
+          <div>Surface Temperature: -233 to 123 °C</div>
+        </div>
+      </div>
+
+      <div class="rounded-xl bg-gray-50 border border-gray-200 p-6">
+        <h3 class="text-xl font-semibold text-gray-900 mb-3">Mars</h3>
+        <p class="text-gray-700 mb-4">Mars is the fourth planet from the Sun and is the second smallest planet in the solar system. Named after the Roman god of war, Mars is also often described as the Red Planet due to its reddish appearance. Mars is a terrestrial planet with a thin atmosphere composed primarily of carbon dioxide.</p>
+        <div class="grid gap-2 sm:grid-cols-2 text-sm text-gray-700">
+          <div>Equatorial Diameter: 6,792 km</div>
+          <div>Polar Diameter: 6,752 km</div>
+          <div>Mass: 6.39 × 10^23 kg (0.11 Earths)</div>
+          <div>Moons: 2 (Phobos & Deimos)</div>
+          <div>Orbit Distance: 227,943,824 km (1.38 AU)</div>
+          <div>Orbit Period: 687 days (1.9 years)</div>
+          <div>Surface Temperature: -87 to -5 °C</div>
+        </div>
+      </div>
+
+      <div class="rounded-xl bg-gray-50 border border-gray-200 p-6">
+        <h3 class="text-xl font-semibold text-gray-900 mb-3">Jupiter</h3>
+        <p class="text-gray-700 mb-4">Jupiter is the largest planet in the solar system and is the fifth planet out from the Sun. It is two and a half times more massive than all the other planets in the solar system combined. It is made primarily of gases and is therefore known as a gas giant.</p>
+        <div class="grid gap-2 sm:grid-cols-2 text-sm text-gray-700">
+          <div>Equatorial Diameter: 142,984 km</div>
+          <div>Polar Diameter: 133,709 km</div>
+          <div>Mass: 1.90 × 10^27 kg (318 Earths)</div>
+          <div>Moons: 95 (Io, Europa, Ganymede & Callisto)</div>
+          <div>Rings: 4</div>
+          <div>Orbit Distance: 778,340,821 km (5.20 AU)</div>
+          <div>Orbit Period: 4,333 days (11.9 years)</div>
+          <div>Surface Temperature: -108 °C</div>
+        </div>
+      </div>
+
+      <div class="rounded-xl bg-gray-50 border border-gray-200 p-6">
+        <h3 class="text-xl font-semibold text-gray-900 mb-3">Saturn</h3>
+        <p class="text-gray-700 mb-4">Best known for its fabulous ring system, Saturn is the sixth planet from the Sun and the second largest in our solar system. Like Jupiter, Saturn is a gas giant and is composed of similar gases including hydrogen, helium and methane.</p>
+        <div class="grid gap-2 sm:grid-cols-2 text-sm text-gray-700">
+          <div>Equatorial Diameter: 120,536 km</div>
+          <div>Polar Diameter: 108,728 km</div>
+          <div>Mass: 5.68 × 10^26 kg (95 Earths)</div>
+          <div>Moons: 274 (Titan, Enceladus, Iapetus & Rhea)</div>
+          <div>Rings: 30+ (7 Groups)</div>
+          <div>Orbit Distance: 1,426,666,422 km (9.58 AU)</div>
+          <div>Orbit Period: 10,756 days (29.5 years)</div>
+          <div>Surface Temperature: -139 °C</div>
+        </div>
+      </div>
+
+      <div class="rounded-xl bg-gray-50 border border-gray-200 p-6">
+        <h3 class="text-xl font-semibold text-gray-900 mb-3">Uranus</h3>
+        <p class="text-gray-700 mb-4">Uranus is the seventh planet from the Sun. It is not visible to the naked eye, and became the first planet discovered with the use of a telescope. Uranus is tipped over on its side with an axial tilt of 98 degrees. It is often described as rolling around the Sun on its side.</p>
+        <div class="grid gap-2 sm:grid-cols-2 text-sm text-gray-700">
+          <div>Equatorial Diameter: 51,118 km</div>
+          <div>Polar Diameter: 49,946 km</div>
+          <div>Mass: 8.68 × 10^25 kg (15 Earths)</div>
+          <div>Moons: 27 (Miranda, Titania, Ariel, Umbriel, Oberon)</div>
+          <div>Rings: 13</div>
+          <div>Orbit Distance: 2,870,658,186 km (19.22 AU)</div>
+          <div>Orbit Period: 30,687 days (84.0 years)</div>
+          <div>Surface Temperature: -197 °C</div>
+        </div>
+      </div>
+
+      <div class="rounded-xl bg-gray-50 border border-gray-200 p-6">
+        <h3 class="text-xl font-semibold text-gray-900 mb-3">Neptune</h3>
+        <p class="text-gray-700 mb-4">Neptune is the eighth planet from the Sun, making it the most distant in the solar system. This gas giant may have formed much closer to the Sun in the early solar system history before migrating out to its current position.</p>
+        <div class="grid gap-2 sm:grid-cols-2 text-sm text-gray-700">
+          <div>Equatorial Diameter: 49,528 km</div>
+          <div>Polar Diameter: 48,682 km</div>
+          <div>Mass: 1.02 × 10^26 kg (17 Earths)</div>
+          <div>Moons: 14 (Triton)</div>
+          <div>Rings: 5</div>
+          <div>Orbit Distance: 4,498,396,441 km (30.10 AU)</div>
+          <div>Orbit Period: 60,190 days (164.8 years)</div>
+          <div>Surface Temperature: -201 °C</div>
+        </div>
+      </div>
+
+      <div class="rounded-xl bg-gray-50 border border-gray-200 p-6">
+        <h3 class="text-xl font-semibold text-gray-900 mb-3">Pluto</h3>
+        <p class="text-gray-700 mb-4">Discovered in 1930, Pluto is the second closest dwarf planet to the Sun and was at one point classified as the ninth planet. Pluto is the largest dwarf planet but only the second most massive, with Eris being the most massive.</p>
+        <div class="grid gap-2 sm:grid-cols-2 text-sm text-gray-700">
+          <div>Diameter: 2,372 km</div>
+          <div>Mass: 1.31 × 10^22 kg (0.17 Moons)</div>
+          <div>Orbit Distance: 5,874,000,000 km (39.26 AU)</div>
+          <div>Orbit Period: 248.0 years</div>
+          <div>Surface Temperature: -229 °C</div>
+          <div>Moons: 5 (Charon)</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="mb-10">
+  <h2 class="text-2xl font-semibold text-gray-800 mb-4">Script</h2>
+
+  <div class="rounded-xl bg-white border p-6 shadow-sm text-gray-700">
+
+    <p class="mb-4">Blender Python Script used for the Solar System project:</p>
+
+    <pre class="bg-gray-100 p-4 rounded-lg overflow-x-auto text-sm">
+import bpy
+import math
+
+# Clear scene
+bpy.ops.object.select_all(action='SELECT')
+bpy.ops.object.delete(use_global=False)
+
+for mesh in bpy.data.meshes:
+    bpy.data.meshes.remove(mesh)
+for mat in bpy.data.materials:
+    bpy.data.materials.remove(mat)
+for img in bpy.data.images:
+    bpy.data.images.remove(img)
+for action in bpy.data.actions:
+    bpy.data.actions.remove(action)
+
+TEX = "C:/Users/Joseph/Downloads/textures/"
+
+# Helper: textured material
+def load_tex_mat(name, filepath, emission=0.0, roughness=0.85):
+    mat = bpy.data.materials.new(name=name)
+    mat.use_nodes = True
+    nodes = mat.node_tree.nodes
+    links = mat.node_tree.links
+    nodes.clear()
+
+    out  = nodes.new("ShaderNodeOutputMaterial")
+    bsdf = nodes.new("ShaderNodeBsdfPrincipled")
+    tex  = nodes.new("ShaderNodeTexImage")
+    uv   = nodes.new("ShaderNodeTexCoord")
+
+    tex.image = bpy.data.images.load(filepath)
+    bsdf.inputs["Roughness"].default_value = roughness
+
+    links.new(uv.outputs["UV"], tex.inputs["Vector"])
+    links.new(tex.outputs["Color"], bsdf.inputs["Base Color"])
+    links.new(bsdf.outputs["BSDF"], out.inputs["Surface"])
+
+    return mat
+
+# Planet
+def make_planet(name, radius, distance, angle=0):
+    x = math.cos(angle) * distance
+    y = math.sin(angle) * distance
+
+    bpy.ops.mesh.primitive_uv_sphere_add(radius=radius, location=(x, y, 0))
+    obj = bpy.context.active_object
+    obj.name = name
+    bpy.ops.object.shade_smooth()
+    return obj
+
+# Orbit animation
+def orbit(obj, radius, speed):
+    for f in range(1, 251):
+        angle = math.radians(speed * f)
+        obj.location.x = math.cos(angle) * radius
+        obj.location.y = math.sin(angle) * radius
+        obj.keyframe_insert("location", frame=f)
+
+# Sun
+sun = make_planet("Sun", 2.0, 0)
+sun.data.materials.append(load_tex_mat("SunMat", TEX+"sun.jpg", emission=4.0))
+
+# Earth
+earth = make_planet("Earth", 0.5, 9.0, 1.6)
+earth.data.materials.append(load_tex_mat("EarthMat", TEX+"earth_daymap.jpg"))
+
+# Moon
+bpy.ops.mesh.primitive_uv_sphere_add(radius=0.13, location=(10, 0, 0))
+moon = bpy.context.active_object
+
+# Lights
+bpy.ops.object.light_add(type='POINT', location=(0,0,0))
+
+# Animation
+orbit(earth, 9.0, 0.3)
+
+print("Done! Press Space to play animation, F12 to render.")
+    </pre>
+
+  </div>
+</section>
+</main>
+
+<div id="footer"></div>
+
+<script>
+// Mobile menu
+const menuBtnMobile = document.getElementById('menu-btn-mobile');
+if (menuBtnMobile) {
+  menuBtnMobile.onclick = () => {
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (mobileMenu) mobileMenu.classList.toggle('hidden');
+  };
+}
+
+// About dropdown
+const aboutBtnDesktop = document.getElementById('about-btn-desktop');
+const aboutMenuDesktop = document.getElementById('about-menu-desktop');
+const aboutArrowDesktop = document.getElementById('about-arrow-desktop');
+
+if (aboutBtnDesktop && aboutMenuDesktop && aboutArrowDesktop) {
+  aboutBtnDesktop.onclick = (event) => {
+    event.stopPropagation();
+    aboutMenuDesktop.classList.toggle('hidden');
+    aboutArrowDesktop.classList.toggle('rotate-180');
+  };
+}
+
+document.addEventListener('click', () => {
+  if (aboutMenuDesktop) aboutMenuDesktop.classList.add('hidden');
+  if (aboutArrowDesktop) aboutArrowDesktop.classList.remove('rotate-180');
+});
+
+// Earth Age Calculator
+const calculateAgeBtn = document.getElementById('calculate-age-btn');
+const earthAgeInput = document.getElementById('earth-age-input');
+const planetAgeResults = document.getElementById('planet-age-results');
+
+const orbitalPeriods = {
+  Mercury: 0.24,
+  Venus: 0.62,
+  Earth: 1,
+  Mars: 1.88,
+  Jupiter: 11.86,
+  Saturn: 29.46,
+  Uranus: 84.01,
+  Neptune: 164.8,
+  Pluto: 248
+};
+
+const planetData = {
+  Mercury: {
+    img: 'https://upload.wikimedia.org/wikipedia/commons/4/4a/Mercury_in_true_color.jpg',
+    desc: 'Closest planet to the Sun and very hot and rocky.',
+    period: 0.24,
+    info: [
+      'Diameter: 4,879 km',
+      'Orbit Period: 88 days',
+      'Surface Temp: -173 to 427 °C'
+    ]
+  },
+  Venus: {
+    img: 'https://upload.wikimedia.org/wikipedia/commons/e/e5/Venus-real_color.jpg',
+    desc: 'Hottest planet with thick toxic atmosphere.',
+    period: 0.62,
+    info: [
+      'Diameter: 12,104 km',
+      'Orbit Period: 225 days',
+      'Surface Temp: 462 °C'
+    ]
+  },
+  Earth: {
+    img: 'https://upload.wikimedia.org/wikipedia/commons/9/97/The_Earth_seen_from_Apollo_17.jpg',
+    desc: 'Our home planet, the only one with life.',
+    period: 1,
+    info: [
+      'Diameter: 12,742 km',
+      'Orbit Period: 365 days',
+      'Moon: 1'
+    ]
+  },
+  Mars: {
+    img: 'https://upload.wikimedia.org/wikipedia/commons/0/02/OSIRIS_Mars_true_color.jpg',
+    desc: 'Red planet with giant volcanoes.',
+    period: 1.88,
+    info: [
+      'Diameter: 6,779 km',
+      'Orbit Period: 687 days',
+      'Moons: 2'
+    ]
+  },
+  Jupiter: {
+    img: 'https://upload.wikimedia.org/wikipedia/commons/e/e2/Jupiter.jpg',
+    desc: 'Largest planet made of gas.',
+    period: 11.86,
+    info: [
+      'Diameter: 139,820 km',
+      'Orbit Period: 11.9 years',
+      'Moons: 95+'
+    ]
+  },
+  Saturn: {
+    img: 'https://upload.wikimedia.org/wikipedia/commons/c/c7/Saturn_during_Equinox.jpg',
+    desc: 'Famous for its beautiful rings.',
+    period: 29.46,
+    info: [
+      'Diameter: 116,460 km',
+      'Orbit Period: 29 years',
+      'Rings: Yes'
+    ]
+  },
+  Uranus: {
+    img: 'https://upload.wikimedia.org/wikipedia/commons/3/3d/Uranus2.jpg',
+    desc: 'Ice giant that rotates sideways.',
+    period: 84.01,
+    info: [
+      'Diameter: 50,724 km',
+      'Orbit Period: 84 years',
+      'Tilt: 98°'
+    ]
+  },
+  Neptune: {
+    img: 'https://upload.wikimedia.org/wikipedia/commons/5/56/Neptune_Full.jpg',
+    desc: 'Windiest planet in the solar system.',
+    period: 164.8,
+    info: [
+      'Diameter: 49,244 km',
+      'Orbit Period: 165 years',
+      'Wind: 2,000 km/h'
+    ]
+  },
+  Pluto: {
+    img: 'https://upload.wikimedia.org/wikipedia/commons/2/2a/Nh-pluto-in-true-color_2x_JPEG-edit-frame.jpg',
+    desc: 'Dwarf planet in the outer solar system.',
+    period: 248,
+    info: [
+      'Diameter: 2,372 km',
+      'Orbit Period: 248 years',
+      'Moons: 5'
+    ]
+  }
+};
+
+let selectedPlanet = 'Pluto';
+
+function formatPlanetAge(age) {
+  const rounded = Math.round(age * 100) / 100;
+  return rounded.toString().replace(/\.00$/, '') + ' years';
+}
+
+function updatePlanet() {
+  const p = planetData[selectedPlanet];
+  document.getElementById('planet-img').src = p.img;
+  document.getElementById('planet-name').innerText = selectedPlanet;
+  document.getElementById('planet-desc').innerText = p.desc;
+  document.getElementById('planet-info').innerHTML = p.info.map(i => `<div>${i}</div>`).join('');
+  document.getElementById('planet-age-result').innerText = '';
+}
+
+document.querySelectorAll('#planet-list li').forEach(item => {
+  item.addEventListener('click', () => {
+    selectedPlanet = item.dataset.planet;
+    updatePlanet();
+  });
+});
+
+calculateAgeBtn.onclick = () => {
+  const earthAge = Number(earthAgeInput.value);
+  if (!earthAge || earthAge < 1) {
+    planetAgeResults.innerHTML = '<p class="text-red-600 font-medium">Please enter a valid Earth age of 1 or higher.</p>';
+    document.getElementById('planet-age-result').innerText = '';
+    return;
+  }
+
+  const selectedAge = earthAge / planetData[selectedPlanet].period;
+  document.getElementById('planet-age-result').innerText = `Your age on ${selectedPlanet}: ${selectedAge.toFixed(2)} years`;
+
+  planetAgeResults.innerHTML = Object.entries(orbitalPeriods)
+    .map(([planet, period]) => {
+      return `
+        <div class="rounded-xl border border-gray-200 bg-white p-4 shadow-sm">
+          <div class="flex items-center justify-between gap-4">
+            <span class="text-lg font-semibold text-gray-900">${planet}</span>
+            <span class="text-blue-600 font-semibold">${formatPlanetAge(earthAge / period)}</span>
+          </div>
+        </div>
+      `;
+    })
+    .join('');
+};
+
+window.addEventListener('DOMContentLoaded', updatePlanet);
+</script>
+
+</body>
+</html>
