@@ -1,80 +1,129 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact - ITOS220-T: Operating Systems</title>
-  <link rel="icon" type="image/png" href="image.jpg">
-  <script src="https://cdn.tailwindcss.com"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact - Multimedia & Authoring</title>
+<link rel="icon" type="image/png" href="image.jpg">
+<script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-50 flex flex-col min-h-screen">
 
-  <header class="bg-white shadow-md">
-    <div class="container mx-auto flex items-center justify-between p-4">
-      <a href="index.html" class="back-to-home text-sm text-blue-600 hover:underline px-3 py-1.5 rounded-md hover:bg-blue-50">&larr; Back to Home</a>
-      <h1 class="text-lg font-semibold text-gray-800">Contact</h1>
-      <span class="text-xs text-gray-400">ITOS220-T</span>
+<header class="bg-white shadow-md">
+  <div class="container mx-auto flex items-center p-6">
+    <div class="text-xl font-bold text-gray-800">
+      Multimedia & Authoring
     </div>
-  </header>
 
-  <main class="container mx-auto mt-10 px-4 flex-1">
-    <section class="mb-12 max-w-2xl mx-auto">
-      <h2 class="text-3xl font-bold text-gray-800 mb-4">Get in touch</h2>
-      <p class="text-gray-700 mb-6">
-        Use the official communication channels provided by your institution to contact your instructor about this course and the laboratory activities.
-      </p>
+    <!-- Desktop Navigation -->
+    <nav class="hidden lg:block ml-auto">
+      <ul class="flex items-center space-x-6 text-gray-700 font-medium">
+        <li><a href="index.html" class="home-link hover:text-blue-600">Home</a></li>
+        <li><a href="finalact.html" class="hover:text-blue-600">Rotoscope</a></li>
+        <li><a href="solarSystem.html" class="hover:text-blue-600">Solar System</a></li>
 
-      <div class="bg-white rounded-lg shadow-sm border border-gray-100 p-6 space-y-4 text-sm text-gray-700">
-        <div>
-          <h3 class="text-base font-semibold text-gray-800 mb-1">Instructor contact</h3>
-          <p>
-            Check your syllabus or learning management system (LMS) for the instructor&apos;s name, email address, and consultation schedule.
-          </p>
-        </div>
-        <div>
-          <h3 class="text-base font-semibold text-gray-800 mb-1">Course announcements</h3>
-          <p>
-            All official announcements, schedule changes, and lab clarifications will be posted in your LMS or class messaging channel.
-          </p>
-        </div>
-        <div>
-          <h3 class="text-base font-semibold text-gray-800 mb-1">Technical support</h3>
-          <p>
-            For issues with virtual machines, software installation, or lab environment access, follow your school&apos;s IT helpdesk procedure.
-          </p>
-        </div>
+        <!-- About -->
+        <li class="relative">
+          <button id="about-btn-desktop" class="flex items-center hover:text-blue-600">
+            About
+            <svg id="about-arrow-desktop" class="w-4 h-4 ml-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </button>
+
+          <div id="about-menu-desktop" class="hidden absolute right-0 mt-2 w-72 bg-white border rounded-lg shadow-lg text-xs">
+            <ul class="py-2 text-gray-700">
+              <li><a href="resources.html" class="block px-4 py-2 hover:bg-gray-100">Resources</a></li>
+              <li><a href="contact.html" class="block px-4 py-2 hover:bg-gray-100">Contact</a></li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Mobile menu -->
+    <div class="ml-auto lg:hidden">
+      <button id="menu-btn-mobile" class="p-2 rounded-md hover:bg-gray-100">
+        ☰
+      </button>
+    </div>
+  </div>
+
+  <nav id="mobile-menu" class="lg:hidden hidden border-t bg-white">
+    <div class="container mx-auto px-4 py-4 space-y-2 text-sm">
+      <a href="index.html" class="home-link block hover:text-blue-600">Home</a>
+      <a href="finalact.html" class="block hover:text-blue-600">Rotoscope Progress</a>
+      <a href="solarSystem.html" class="block hover:text-blue-600">Solar System</a>
+      <a href="resources.html" class="block hover:text-blue-600">Resources</a>
+      <a href="contact.html" class="block hover:text-blue-600">Contact</a>
+    </div>
+  </nav>
+</header>
+
+<main class="container mx-auto mt-10 px-4 pb-12">
+  <section class="mb-10 max-w-2xl mx-auto">
+    <h1 class="text-3xl font-bold text-gray-800 mb-4">Contact</h1>
+    <p class="text-gray-700 mb-6">
+      Use the official communication channels provided by your institution to contact your instructor about this course and the laboratory activities.
+    </p>
+
+    <div class="bg-white rounded-xl shadow-sm border p-6 space-y-4 text-sm text-gray-700">
+      <div>
+        <h2 class="text-xl font-semibold text-gray-800 mb-2">Instructor Contact</h2>
+        <p>
+          Check your syllabus or learning management system (LMS) for the instructor's name, email address, and consultation schedule.
+        </p>
       </div>
+      <div>
+        <h2 class="text-xl font-semibold text-gray-800 mb-2">Course Announcements</h2>
+        <p>
+          All official announcements, schedule changes, and lab clarifications will be posted in your LMS or class messaging channel.
+        </p>
+      </div>
+      <div>
+        <h2 class="text-xl font-semibold text-gray-800 mb-2">Technical Support</h2>
+        <p>
+          For issues with virtual machines, software installation, or lab environment access, follow your school's IT helpdesk procedure.
+        </p>
+      </div>
+    </div>
 
-      <p class="text-sm text-gray-500 mt-6">
-        You can customize this page with specific email addresses, office hours, or links to contact forms if required by your course.
-      </p>
-    </section>
-  </main>
+    <p class="text-sm text-gray-500 mt-6">
+      You can customize this page with specific email addresses, office hours, or links to contact forms if required by your course.
+    </p>
+  </section>
+</main>
 
-  <div id="footer"></div>
+<div id="footer"></div>
 
-  <script>
-    (function() {
-      document.addEventListener('DOMContentLoaded', function() {
-        var link = document.querySelector('a.back-to-home');
-        if (!link) return;
-        var path = window.location.pathname;
-        var parts = path.split('/').filter(Boolean);
-        parts.pop();
-        if (parts.length && parts[parts.length - 1] === 'LaboratoryAct') parts.pop();
-        var base = '/' + (parts.length ? parts.join('/') + '/' : '');
-        link.href = base + 'index.html';
-      });
-    })();
-    fetch("footer.html")
-      .then(res => res.text())
-      .then(html => {
-        const footerContainer = document.getElementById("footer");
-        if (footerContainer) {
-          footerContainer.innerHTML = html;
-        }
-      })
-      .catch(() => {});
-  </script>
+<script>
+// Mobile menu
+const menuBtnMobile = document.getElementById('menu-btn-mobile');
+if (menuBtnMobile) {
+  menuBtnMobile.onclick = () => {
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (mobileMenu) mobileMenu.classList.toggle('hidden');
+  };
+}
+
+// About dropdown
+const aboutBtnDesktop = document.getElementById('about-btn-desktop');
+const aboutMenuDesktop = document.getElementById('about-menu-desktop');
+const aboutArrowDesktop = document.getElementById('about-arrow-desktop');
+
+if (aboutBtnDesktop && aboutMenuDesktop && aboutArrowDesktop) {
+  aboutBtnDesktop.onclick = (event) => {
+    event.stopPropagation();
+    aboutMenuDesktop.classList.toggle('hidden');
+    aboutArrowDesktop.classList.toggle('rotate-180');
+  };
+}
+
+document.addEventListener('click', () => {
+  if (aboutMenuDesktop) aboutMenuDesktop.classList.add('hidden');
+  if (aboutArrowDesktop) aboutArrowDesktop.classList.remove('rotate-180');
+});
+</script>
+
 </body>
 </html>

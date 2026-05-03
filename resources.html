@@ -1,111 +1,126 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Resources - Multimedia & Authoring</title>
-  <link rel="icon" type="image/png" href="image.jpg">
-  <script src="https://cdn.tailwindcss.com"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resources - Multimedia & Authoring</title>
+<link rel="icon" type="image/png" href="image.jpg">
+<script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-50 flex flex-col min-h-screen">
 
-  <header class="bg-white shadow-md">
-    <div class="container mx-auto flex items-center justify-between p-4">
-      <a href="index.html" class="back-to-home text-sm text-blue-600 hover:underline px-3 py-1.5 rounded-md hover:bg-blue-50">&larr; Back to Home</a>
-      <h1 class="text-lg font-semibold text-gray-800">Course Resources</h1>
-      <span class="text-xs text-gray-400">Multimedia & Authoring</span>
+<header class="bg-white shadow-md">
+  <div class="container mx-auto flex items-center p-6">
+    <div class="text-xl font-bold text-gray-800">
+      Multimedia & Authoring
     </div>
-  </header>
 
-  <main class="container mx-auto mt-10 px-4 flex-1">
-    <section class="mb-12">
-      <h2 class="text-3xl font-bold text-gray-800 mb-4">References & Materials</h2>
-      <p class="text-gray-700 mb-4">
-        This page contains useful resources to help you understand multimedia concepts
-        and complete your projects in video editing, graphics, animation, and authoring.
-      </p>
+    <!-- Desktop Navigation -->
+    <nav class="hidden lg:block ml-auto">
+      <ul class="flex items-center space-x-6 text-gray-700 font-medium">
+        <li><a href="index.html" class="home-link hover:text-blue-600">Home</a></li>
+        <li><a href="finalact.html" class="hover:text-blue-600">Rotoscope</a></li>
+        <li><a href="solarSystem.html" class="hover:text-blue-600">Solar System</a></li>
 
-      <div class="grid md:grid-cols-2 gap-8">
+        <!-- About -->
+        <li class="relative">
+          <button id="about-btn-desktop" class="flex items-center hover:text-blue-600">
+            About
+            <svg id="about-arrow-desktop" class="w-4 h-4 ml-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </button>
 
-        <!-- Software -->
-        <div class="bg-white rounded-lg shadow-sm border border-gray-100 p-5">
-          <h3 class="text-xl font-semibold text-gray-800 mb-2">Multimedia Software</h3>
-          <ul class="list-disc list-inside text-gray-700 space-y-1 text-sm">
-            <li>Video editing tools (CapCut, Premiere Pro, DaVinci Resolve)</li>
-            <li>Graphic design tools (Photoshop, Canva)</li>
-            <li>Audio editing tools (Audacity)</li>
-            <li>Animation tools (Blender, Adobe Animate)</li>
-          </ul>
-        </div>
+          <div id="about-menu-desktop" class="hidden absolute right-0 mt-2 w-72 bg-white border rounded-lg shadow-lg text-xs">
+            <ul class="py-2 text-gray-700">
+              <li><a href="resources.html" class="block px-4 py-2 hover:bg-gray-100">Resources</a></li>
+              <li><a href="contact.html" class="block px-4 py-2 hover:bg-gray-100">Contact</a></li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </nav>
 
-        <!-- Tutorials -->
-        <div class="bg-white rounded-lg shadow-sm border border-gray-100 p-5">
-          <h3 class="text-xl font-semibold text-gray-800 mb-2">Tutorials & Guides</h3>
-          <ul class="list-disc list-inside text-gray-700 space-y-1 text-sm">
-            <li>Beginner guides for video editing</li>
-            <li>Graphic design principles and tutorials</li>
-            <li>Animation basics and techniques</li>
-            <li>Step-by-step multimedia project guides</li>
-          </ul>
-        </div>
+    <!-- Mobile menu -->
+    <div class="ml-auto lg:hidden">
+      <button id="menu-btn-mobile" class="p-2 rounded-md hover:bg-gray-100">
+        ☰
+      </button>
+    </div>
+  </div>
 
-        <!-- Course Materials -->
-        <div class="bg-white rounded-lg shadow-sm border border-gray-100 p-5">
-          <h3 class="text-xl font-semibold text-gray-800 mb-2">Course Materials</h3>
-          <ul class="list-disc list-inside text-gray-700 space-y-1 text-sm">
-            <li>Lecture notes and handouts</li>
-            <li>Sample multimedia projects</li>
-            <li>Design templates and assets</li>
-            <li>Project rubrics and checklists</li>
-          </ul>
-        </div>
+  <nav id="mobile-menu" class="lg:hidden hidden border-t bg-white">
+    <div class="container mx-auto px-4 py-4 space-y-2 text-sm">
+      <a href="index.html" class="home-link block hover:text-blue-600">Home</a>
+      <a href="finalact.html" class="block hover:text-blue-600">Rotoscope Progress</a>
+      <a href="solarSystem.html" class="block hover:text-blue-600">Solar System</a>
+      <a href="resources.html" class="block hover:text-blue-600">Resources</a>
+      <a href="contact.html" class="block hover:text-blue-600">Contact</a>
+    </div>
+  </nav>
+</header>
 
-        <!-- Multimedia Content -->
-        <div class="bg-white rounded-lg shadow-sm border border-gray-100 p-5">
-          <h3 class="text-xl font-semibold text-gray-800 mb-2">Multimedia References</h3>
-          <ul class="list-disc list-inside text-gray-700 space-y-1 text-sm">
-            <li>Educational YouTube tutorials</li>
-            <li>Stock images and videos (free resources)</li>
-            <li>Sound effects and background music libraries</li>
-            <li>Inspiration from professional projects</li>
-          </ul>
-        </div>
+<main class="container mx-auto mt-10 px-4 pb-12">
+  <section class="mb-10">
+    <h1 class="text-3xl font-bold text-gray-800 mb-4">Resources</h1>
+    <p class="text-gray-700 max-w-3xl">
+      This page contains useful resources to help you understand multimedia concepts and complete your projects in video editing, graphics, animation, and authoring.
+    </p>
+  </section>
 
-      </div>
+  <div class="grid gap-8 md:grid-cols-2">
+    <div class="bg-white rounded-xl shadow-sm border p-6">
+      <h2 class="text-2xl font-semibold text-gray-800 mb-4">Multimedia Software</h2>
+      <ul class="list-disc list-inside text-gray-700 space-y-2">
+        <li>Video editing tools (CapCut, Premiere Pro, DaVinci Resolve)</li>
+        <li>Graphic design tools (Photoshop, Canva)</li>
+        <li>Audio editing tools (Audacity)</li>
+        <li>Animation tools (Blender, Adobe Animate)</li>
+      </ul>
+    </div>
 
-      <p class="text-sm text-gray-500 mt-6">
-        You can enhance this page by adding direct links to your tools, tutorials,
-        or downloadable assets used in your multimedia projects.
-      </p>
-    </section>
-  </main>
+    <div class="bg-white rounded-xl shadow-sm border p-6">
+      <h2 class="text-2xl font-semibold text-gray-800 mb-4">Tutorials & Guides</h2>
+      <ul class="list-disc list-inside text-gray-700 space-y-2">
+        <li>Beginner guides for video editing</li>
+        <li>Graphic design principles and tutorials</li>
+        <li>Animation basics and techniques</li>
+        <li>Step-by-step multimedia project guides</li>
+      </ul>
+    </div>
+  </div>
+</main>
 
-  <div id="footer"></div>
+<div id="footer"></div>
 
-  <script>
-    (function() {
-      document.addEventListener('DOMContentLoaded', function() {
-        var link = document.querySelector('a.back-to-home');
-        if (!link) return;
-        var path = window.location.pathname;
-        var parts = path.split('/').filter(Boolean);
-        parts.pop();
-        if (parts.length && parts[parts.length - 1] === 'LaboratoryAct') parts.pop();
-        var base = '/' + (parts.length ? parts.join('/') + '/' : '');
-        link.href = base + 'index.html';
-      });
-    })();
+<script>
+// Mobile menu
+const menuBtnMobile = document.getElementById('menu-btn-mobile');
+if (menuBtnMobile) {
+  menuBtnMobile.onclick = () => {
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (mobileMenu) mobileMenu.classList.toggle('hidden');
+  };
+}
 
-    fetch("footer.html")
-      .then(res => res.text())
-      .then(html => {
-        const footerContainer = document.getElementById("footer");
-        if (footerContainer) {
-          footerContainer.innerHTML = html;
-        }
-      })
-      .catch(() => {});
-  </script>
+// About dropdown
+const aboutBtnDesktop = document.getElementById('about-btn-desktop');
+const aboutMenuDesktop = document.getElementById('about-menu-desktop');
+const aboutArrowDesktop = document.getElementById('about-arrow-desktop');
+
+if (aboutBtnDesktop && aboutMenuDesktop && aboutArrowDesktop) {
+  aboutBtnDesktop.onclick = (event) => {
+    event.stopPropagation();
+    aboutMenuDesktop.classList.toggle('hidden');
+    aboutArrowDesktop.classList.toggle('rotate-180');
+  };
+}
+
+document.addEventListener('click', () => {
+  if (aboutMenuDesktop) aboutMenuDesktop.classList.add('hidden');
+  if (aboutArrowDesktop) aboutArrowDesktop.classList.remove('rotate-180');
+});
+</script>
 
 </body>
 </html>
