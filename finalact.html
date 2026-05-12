@@ -6,10 +6,82 @@
 <title>Rotoscope Progress - Multimedia & Authoring</title>
 <link rel="icon" type="image/png" href="image.jpg">
 <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-gray-50 flex flex-col min-h-screen">
+<style>
+  body {
+    background-color: #02040e;
+    background-image:
+      radial-gradient(circle at 20% 20%, rgba(56, 189, 248, 0.16), transparent 22%),
+      radial-gradient(circle at 80% 10%, rgba(168, 85, 247, 0.12), transparent 20%),
+      radial-gradient(circle at 70% 85%, rgba(14, 165, 233, 0.08), transparent 26%);
+    color: #cbd5e1;
+  }
 
-<header class="bg-white shadow-md">
+  .glass-panel {
+    background: rgba(15, 23, 42, 0.82);
+    border: 1px solid rgba(148, 163, 184, 0.16);
+    box-shadow: 0 32px 80px rgba(15, 23, 42, 0.35);
+    backdrop-filter: blur(16px);
+    border-radius: 1.75rem;
+  }
+
+  .glass-panel-strong {
+    background: rgba(15, 23, 42, 0.92);
+  }
+
+  .bg-white {
+    background-color: rgba(15, 23, 42, 0.88) !important;
+    color: #e2e8f0 !important;
+  }
+
+  .bg-gray-50 {
+    background-color: rgba(15, 23, 42, 0.65) !important;
+    color: #cbd5e1 !important;
+  }
+
+  .text-gray-800,
+  .text-gray-900,
+  .text-gray-700,
+  .text-gray-600,
+  .text-gray-500,
+  .text-gray-400 {
+    color: #cbd5e1 !important;
+  }
+
+  .hover\:text-blue-600:hover,
+  a:hover {
+    color: #7dd3fc !important;
+  }
+
+  .hover\:bg-gray-100:hover {
+    background-color: rgba(15, 23, 42, 0.75) !important;
+  }
+
+  pre {
+    background: rgba(15, 23, 42, 0.88) !important;
+    color: #e2e8f0 !important;
+  }
+
+  main > section {
+    margin-bottom: 2.5rem;
+    padding: 2rem;
+    border: 1px solid rgba(148, 163, 184, 0.16);
+    border-radius: 1.75rem;
+    background: rgba(15, 23, 42, 0.84);
+    box-shadow: 0 32px 80px rgba(15, 23, 42, 0.35);
+  }
+
+  .container iframe,
+  .container .aspect-video {
+    border-radius: 1.5rem;
+    overflow: hidden;
+    box-shadow: 0 28px 64px rgba(15, 23, 42, 0.32);
+    border: 1px solid rgba(148, 163, 184, 0.16);
+  }
+</style>
+</head>
+<body class="bg-slate-950 text-slate-100 flex flex-col min-h-screen">
+
+<header class="sticky top-0 z-30 bg-slate-950/95 backdrop-blur-xl border-b border-slate-700/40 shadow-none">
   <div class="container mx-auto flex items-center p-6">
     <div class="text-xl font-bold text-gray-800">Multimedia & Authoring</div>
 
@@ -26,10 +98,10 @@
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
             </svg>
           </button>
-          <div id="about-menu-desktop" class="hidden absolute right-0 mt-2 w-72 bg-white border rounded-lg shadow-lg text-xs">
-            <ul class="py-2 text-gray-700">
-              <li><a href="resources.html" class="block px-4 py-2 hover:bg-gray-100">Resources</a></li>
-              <li><a href="contact.html" class="block px-4 py-2 hover:bg-gray-100">Contact</a></li>
+          <div id="about-menu-desktop" class="hidden absolute right-0 mt-2 w-72 bg-slate-950/95 border border-slate-700/60 rounded-2xl shadow-2xl text-xs backdrop-blur-xl">
+            <ul class="py-2 text-slate-200">
+              <li><a href="resources.html" class="block px-4 py-2 hover:bg-slate-800 rounded-lg">Resources</a></li>
+              <li><a href="contact.html" class="block px-4 py-2 hover:bg-slate-800 rounded-lg">Contact</a></li>
             </ul>
           </div>
         </li>
@@ -37,11 +109,11 @@
     </nav>
 
     <div class="ml-auto lg:hidden">
-      <button id="menu-btn-mobile" class="p-2 rounded-md hover:bg-gray-100">☰</button>
+      <button id="menu-btn-mobile" class="p-2 rounded-md hover:bg-slate-800">☰</button>
     </div>
   </div>
 
-  <nav id="mobile-menu" class="lg:hidden hidden border-t bg-white">
+  <nav id="mobile-menu" class="lg:hidden hidden border-t border-slate-700/40 bg-slate-950/95 backdrop-blur-xl">
     <div class="container mx-auto px-4 py-4 space-y-2 text-sm">
       <a href="index.html" class="home-link block hover:text-blue-600">Home</a>
       <a href="finalact.html" class="block hover:text-blue-600">Rotoscope Progress</a>
@@ -111,22 +183,22 @@
     </div>
 
     <aside class="space-y-6">
-      <div class="rounded-xl bg-white border p-6 shadow-sm">
-        <h2 class="text-2xl font-semibold text-gray-800 mb-4">Progress Guide</h2>
-        <p class="text-gray-700 leading-7 mb-4">Use the videos to review each stage of the rotoscoping workflow. Start with the reference video, then continue through the progress clips.</p>
-        <ul class="space-y-3 text-gray-700">
-          <li class="rounded-lg border border-gray-200 p-4">Progress 1: Initial tracing and motion setup.</li>
-          <li class="rounded-lg border border-gray-200 p-4">Progress 2: Refining outlines and adding details.</li>
-          <li class="rounded-lg border border-gray-200 p-4">Progress 3: Enhancing textures and lighting.</li>
-          <li class="rounded-lg border border-gray-200 p-4">Progress 4: Final touches and rendering.</li>
-          <li class="rounded-lg border border-gray-200 p-4">Progress 5: Final touches and rendering.</li>
-          <li class="rounded-lg border border-gray-200 p-4">Progress 6: Final touches and rendering.</li>
+      <div class="rounded-3xl glass-panel border p-6 shadow-2xl">
+        <h2 class="text-2xl font-semibold text-slate-100 mb-4">Progress Guide</h2>
+        <p class="text-slate-300 leading-7 mb-4">Use the videos to review each stage of the rotoscoping workflow. Start with the reference video, then continue through the progress clips.</p>
+        <ul class="space-y-3 text-slate-300">
+          <li class="rounded-2xl border border-slate-700/40 p-4">Progress 1: Initial tracing and motion setup.</li>
+          <li class="rounded-2xl border border-slate-700/40 p-4">Progress 2: Refining outlines and adding details.</li>
+          <li class="rounded-2xl border border-slate-700/40 p-4">Progress 3: Enhancing textures and lighting.</li>
+          <li class="rounded-2xl border border-slate-700/40 p-4">Progress 4: Final touches and rendering.</li>
+          <li class="rounded-2xl border border-slate-700/40 p-4">Progress 5: Final touches and rendering.</li>
+          <li class="rounded-2xl border border-slate-700/40 p-4">Progress 6: Final touches and rendering.</li>
         </ul>
       </div>
 
-      <div class="rounded-xl bg-white border p-6 shadow-sm">
-        <h2 class="text-2xl font-semibold text-gray-800 mb-4">Next Steps</h2>
-        <p class="text-gray-700 leading-7">Continue the project by adding more progress videos, notes, and final presentation details as you build toward completion.</p>
+      <div class="rounded-3xl glass-panel border p-6 shadow-2xl">
+        <h2 class="text-2xl font-semibold text-slate-100 mb-4">Next Steps</h2>
+        <p class="text-slate-300 leading-7">Continue the project by adding more progress videos, notes, and final presentation details as you build toward completion.</p>
       </div>
     </aside>
   </div>

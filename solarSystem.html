@@ -6,12 +6,65 @@
 <title>Solar System</title>
 <link rel="icon" type="image/png" href="image.jpg">
 <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-gray-50 flex flex-col min-h-screen">
+<style>
+  body {
+    background-color: #02040e;
+    background-image:
+      radial-gradient(circle at 20% 20%, rgba(56, 189, 248, 0.16), transparent 22%),
+      radial-gradient(circle at 80% 10%, rgba(168, 85, 247, 0.12), transparent 20%),
+      radial-gradient(circle at 70% 85%, rgba(14, 165, 233, 0.08), transparent 26%);
+    color: #cbd5e1;
+  }
 
-<header class="bg-white shadow-md">
+  .glass-panel {
+    background: rgba(15, 23, 42, 0.82);
+    border: 1px solid rgba(148, 163, 184, 0.16);
+    box-shadow: 0 32px 80px rgba(15, 23, 42, 0.35);
+    backdrop-filter: blur(16px);
+  }
+
+  .glass-panel-strong {
+    background: rgba(15, 23, 42, 0.92);
+  }
+
+  .bg-white {
+    background-color: rgba(15, 23, 42, 0.88) !important;
+    color: #e2e8f0 !important;
+  }
+
+  .bg-gray-100 {
+    background-color: rgba(15, 23, 42, 0.65) !important;
+  }
+
+  .text-gray-800,
+  .text-gray-900,
+  .text-gray-700,
+  .text-gray-600,
+  .text-gray-500,
+  .text-gray-400 {
+    color: #cbd5e1 !important;
+  }
+
+  .hover\:text-blue-600:hover,
+  a:hover {
+    color: #7dd3fc !important;
+  }
+
+  .planet-list-item:hover {
+    background: rgba(56, 189, 248, 0.08);
+  }
+
+  pre {
+    background: rgba(15, 23, 42, 0.88) !important;
+    color: #e2e8f0 !important;
+  }
+</style>
+</head>
+<body class="bg-slate-950 text-slate-100 flex flex-col min-h-screen">
+
+<header class="sticky top-0 z-30 bg-slate-950/95 backdrop-blur-xl border-b border-slate-700/40 shadow-none">
   <div class="container mx-auto flex items-center p-6">
-    <div class="text-xl font-bold text-gray-800">
+    <div class="text-xl font-bold text-slate-100">
       Multimedia & Authoring
     </div>
 
@@ -33,8 +86,8 @@
 
           <div id="about-menu-desktop" class="hidden absolute right-0 mt-2 w-72 bg-white border rounded-lg shadow-lg text-xs">
             <ul class="py-2 text-gray-700">
-              <li><a href="resources.html" class="block px-4 py-2 hover:bg-gray-100">Resources</a></li>
-              <li><a href="contact.html" class="block px-4 py-2 hover:bg-gray-100">Contact</a></li>
+              <li><a href="resources.html" class="block px-4 py-2 hover:bg-slate-800">Resources</a></li>
+              <li><a href="contact.html" class="block px-4 py-2 hover:bg-slate-800">Contact</a></li>
             </ul>
           </div>
         </li>
@@ -43,7 +96,7 @@
 
     <!-- Mobile menu -->
     <div class="ml-auto lg:hidden">
-      <button id="menu-btn-mobile" class="p-2 rounded-md hover:bg-gray-100">
+      <button id="menu-btn-mobile" class="p-2 rounded-md hover:bg-slate-800">
         ☰
       </button>
     </div>
@@ -59,31 +112,31 @@
 </header>
 
 <main class="container mx-auto mt-10 px-4 pb-12">
-  <section class="mb-10">
-    <h1 class="text-3xl font-bold text-gray-800 mb-4">Solar System</h1>
-    <p class="text-gray-700 max-w-3xl">
+  <section class="glass-panel mb-10 p-8 rounded-3xl border border-slate-700/40 shadow-xl">
+    <h1 class="text-3xl font-bold text-slate-100 mb-4">Solar System</h1>
+    <p class="text-slate-300 max-w-3xl">
       Explore the Solar System project with video, explanation, method, an interactive Earth age calculator, and a script section for your final write-up.
     </p>
   </section>
 
-  <section class="mb-10">
-    <h2 class="text-2xl font-semibold text-gray-800 mb-4">Video</h2>
-    <div class="aspect-video w-full rounded-xl overflow-hidden shadow-lg">
+  <section class="glass-panel mb-10 p-8 rounded-3xl border border-slate-700/40 shadow-xl">
+    <h2 class="text-2xl font-semibold text-slate-100 mb-4">Video</h2>
+    <div class="aspect-video w-full rounded-3xl overflow-hidden shadow-2xl border border-slate-700/40">
       <iframe class="w-full h-full" src="https://www.youtube.com/embed/TW3pnyg_NG8?si" title="Solar System Video" allowfullscreen></iframe>
     </div>
   </section>
 
-  <section class="mb-10">
-    <h2 class="text-2xl font-semibold text-gray-800 mb-4">Description</h2>
-    <p class="text-gray-700 leading-7">
+  <section class="glass-panel mb-10 p-8 rounded-3xl border border-slate-700/40 shadow-xl">
+    <h2 class="text-2xl font-semibold text-slate-100 mb-4">Description</h2>
+    <p class="text-slate-300 leading-7">
       This Solar System project introduces the planets, moons, and basic space science concepts. It explains how the system is organized, how the planets move, and what makes Earth unique among the planets.
     </p>
   </section>
 
-  <section class="mb-10">
-  <h2 class="text-2xl font-semibold text-gray-800 mb-4">Method</h2>
+  <section class="glass-panel mb-10 p-8 rounded-3xl border border-slate-700/40 shadow-xl">
+  <h2 class="text-2xl font-semibold text-slate-100 mb-4">Method</h2>
 
-  <div class="space-y-6 text-gray-700 leading-7">
+  <div class="space-y-6 text-slate-300 leading-7">
 
     <div class="rounded-xl bg-white border p-6 shadow-sm">
       <h3 class="text-lg font-semibold text-gray-900 mb-2">Step 1: Download Textures</h3>
@@ -157,8 +210,8 @@ ffmpeg -framerate 24 -i "C:/tmp/%04d.png" -c:v libx264 -pix_fmt yuv420p "C:/User
   </div>
 </section>
 
-  <section class="mb-10 bg-white rounded-xl shadow-sm border p-6">
-  <h2 class="text-2xl font-semibold text-gray-800 mb-4">
+  <section class="glass-panel-strong mb-10 rounded-3xl shadow-xl border border-slate-700/40 p-8">
+  <h2 class="text-2xl font-semibold text-slate-100 mb-4">
     Earth Age Calculator
   </h2>
 
@@ -373,10 +426,10 @@ ffmpeg -framerate 24 -i "C:/tmp/%04d.png" -c:v libx264 -pix_fmt yuv420p "C:/User
     </div>
   </section>
 
-  <section class="mb-10">
-  <h2 class="text-2xl font-semibold text-gray-800 mb-4">Script</h2>
+  <section class="glass-panel mb-10 p-8 rounded-3xl border border-slate-700/40 shadow-xl">
+  <h2 class="text-2xl font-semibold text-slate-100 mb-4">Script</h2>
 
-  <div class="rounded-xl bg-white border p-6 shadow-sm text-gray-700">
+  <div class="rounded-3xl glass-panel-strong border p-6 shadow-xl text-slate-300">
 
     <p class="mb-4">Blender Python Script used for the Solar System project:</p>
 
