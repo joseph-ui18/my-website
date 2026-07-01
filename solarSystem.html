@@ -67,16 +67,24 @@
   </section>
 
   <section class="mb-10">
-    <h2 class="text-2xl font-semibold text-gray-800 mb-4">Video</h2>
+    <h2 class="text-2xl font-semibold text-gray-800 mb-4">Output #1</h2>
     <div class="aspect-video w-full rounded-xl overflow-hidden shadow-lg">
       <iframe class="w-full h-full" src="https://www.youtube.com/embed/TW3pnyg_NG8?si" title="Solar System Video" allowfullscreen></iframe>
     </div>
   </section>
 
   <section class="mb-10">
-    <h2 class="text-2xl font-semibold text-gray-800 mb-4">Final Output</h2>
+    <h2 class="text-2xl font-semibold text-gray-800 mb-4">Output #2</h2>
     <div class="aspect-video w-full rounded-xl overflow-hidden shadow-lg">
       <iframe class="w-full h-full" src="https://www.youtube.com/embed/tn5yRgC0S20?si" title="Solar System Final Output Video" allowfullscreen></iframe>
+    </div>
+    <p class="mt-4 text-gray-700 leading-7">This video shows the final completed Solar System project output. Review the finished animation, scene setup, and presentation in the final result.</p>
+  </section>
+  
+    <section class="mb-10">
+    <h2 class="text-2xl font-semibold text-gray-800 mb-4">Final Output</h2>
+    <div class="aspect-video w-full rounded-xl overflow-hidden shadow-lg">
+      <iframe class="w-full h-full" src="https://www.youtube.com/embed/LSgrDfWgZuI?si" title="Solar System Final Output Video" allowfullscreen></iframe>
     </div>
     <p class="mt-4 text-gray-700 leading-7">This video shows the final completed Solar System project output. Review the finished animation, scene setup, and presentation in the final result.</p>
   </section>
@@ -389,84 +397,767 @@ ffmpeg -framerate 24 -i "C:/tmp/%04d.png" -c:v libx264 -pix_fmt yuv420p "C:/User
     <p class="mb-4">Blender Python Script used for the Solar System project:</p>
 
     <pre class="bg-gray-100 p-4 rounded-lg overflow-x-auto text-sm">
-import bpy
-import math
+import bpy, math
 
-# Clear scene
+# ================= RESET =================
 bpy.ops.object.select_all(action='SELECT')
 bpy.ops.object.delete(use_global=False)
-
-for mesh in bpy.data.meshes:
-    bpy.data.meshes.remove(mesh)
-for mat in bpy.data.materials:
+for mat in list(bpy.data.materials):
     bpy.data.materials.remove(mat)
-for img in bpy.data.images:
-    bpy.data.images.remove(img)
-for action in bpy.data.actions:
-    bpy.data.actions.remove(action)
 
-TEX = "C:/Users/Joseph/Downloads/textures/"
+scene = bpy.context.scene
 
-# Helper: textured material
-def load_tex_mat(name, filepath, emission=0.0, roughness=0.85):
-    mat = bpy.data.materials.new(name=name)
+TOTAL_FRAMES = 960
+SPIN_FRAMES  = 1440
+scene.frame_start = 1
+scene.frame_end   = TOTAL_FRAMES
+scene.render.fps  = 24
+
+def orb(n): return 2 * math.pi * n / TOTAL_FRAMES
+def spn(n): return 2 * math.pi * n / SPIN_FRAMES
+
+# ================= TEXTURE PATHS =================
+TEX = {
+    "sun":     r"C:\Users\Charlie\Downloads\textures\sun.jpg",
+    "mercury": r"C:\Users\Charlie\Downloads\textures\mercury.jpg",
+    "venus":   r"C:\Users\Charlie\Downloads\textures\venus.jpg",
+    "earth":   r"C:\Users\Charlie\Downloads\textures\earth_daymap.jpg",
+    "mars":    r"C:\Users\Charlie\Downloads\textures\2k_mars.jpg",
+    "jupiter": r"C:\Users\Charlie\Downloads\textures\2k_jupiter.jpg",
+    "saturn":  r"C:\Users\Charlie\Downloads\textures\2k_saturn.jpg",
+    "uranus":  r"C:\Users\Charlie\Downloads\textures\2k_uranus.jpg",
+    "neptune": r"C:\Users\Charlie\Downloads\textures\2k_neptune.jpg",
+    "pluto":   r"C:\Users\Charlie\Downloads\textures\2k_pluto.jpg",
+    "moon":    r"C:\Users\Charlie\Downloads\textures\moon.jpg",
+    "rings":   r"C:\Users\Charlie\Downloads\textures\saturn_ring_color.jpg",
+}
+
+# ================= EEVEE =================
+scene.render.engine = 'BLENDER_EEVEE'
+scene.eevee.taa_render_samples = 64
+scene.eevee.use_shadows = False
+try:
+    scene.eevee.use_bloom = True
+    scene.eevee.bloom_threshold = 0.5
+    scene.eevee.bloom_intensity = 0.3
+except AttributeError:
+    pass
+
+# ================= MATERIAL =================
+def make_material(obj, tex_key, emission=False, alpha=1.0):
+    path = TEX.get(tex_key, "")
+    mat = bpy.data.materials.new(obj.name + "_Mat")
     mat.use_nodes = True
-    nodes = mat.node_tree.nodes
-    links = mat.node_tree.links
-    nodes.clear()
+    nt = mat.node_tree
+    for n in list(nt.nodes): nt.nodes.remove(n)
+    out = nt.nodes.new("ShaderNodeOutputMaterial")
+    tex = nt.nodes.new("ShaderNodeTexImage")
+    if path:
+        try:
+            img = bpy.data.images.load(path, check_existing=True)
+            img.colorspace_settings.name = "sRGB"
+            tex.image = img
+        except Exception as e:
+            print(f"  [WARN] {path}: {e}")
+    emit = nt.nodes.new("ShaderNodeEmission")
+    strength = 4.0 if emission else 1.0
+    emit.inputs[1].default_value = strength
+    nt.links.new(tex.outputs[0],  emit.inputs[0])
+    nt.links.new(emit.outputs[0], out.inputs[0])
+    obj.data.materials.clear()
+    obj.data.materials.append(mat)
+    obj.visible_shadow = False
 
-    out  = nodes.new("ShaderNodeOutputMaterial")
-    bsdf = nodes.new("ShaderNodeBsdfPrincipled")
-    tex  = nodes.new("ShaderNodeTexImage")
-    uv   = nodes.new("ShaderNodeTexCoord")
-
-    tex.image = bpy.data.images.load(filepath)
-    bsdf.inputs["Roughness"].default_value = roughness
-
-    links.new(uv.outputs["UV"], tex.inputs["Vector"])
-    links.new(tex.outputs["Color"], bsdf.inputs["Base Color"])
-    links.new(bsdf.outputs["BSDF"], out.inputs["Surface"])
-
-    return mat
-
-# Planet
-def make_planet(name, radius, distance, angle=0):
-    x = math.cos(angle) * distance
-    y = math.sin(angle) * distance
-
-    bpy.ops.mesh.primitive_uv_sphere_add(radius=radius, location=(x, y, 0))
-    obj = bpy.context.active_object
-    obj.name = name
-    bpy.ops.object.shade_smooth()
+# ================= ORBIT RING =================
+def make_orbit_ring(name, radius, color=(0.2, 0.4, 0.😎, parent=None):
+    verts  = 128
+    coords = [(math.cos(2*math.pi*i/verts)*radius,
+               math.sin(2*math.pi*i/verts)*radius, 0.0)
+              for i in range(verts)]
+    coords.append(coords[0])
+    cd = bpy.data.curves.new(name + "_Ring", type='CURVE')
+    cd.dimensions   = '3D'
+    cd.bevel_depth  = 0.008
+    cd.resolution_u = 4
+    sp = cd.splines.new('POLY')
+    sp.points.add(len(coords) - 1)
+    for i, co in enumerate(coords):
+        sp.points[i].co = (*co, 1.0)
+    obj = bpy.data.objects.new(name + "_Ring", cd)
+    bpy.context.collection.objects.link(obj)
+    if parent:
+        obj.parent = parent
+    mat = bpy.data.materials.new(name + "_RingMat")
+    mat.use_nodes = True
+    mn = mat.node_tree
+    for n in list(mn.nodes): mn.nodes.remove(n)
+    em = mn.nodes.new("ShaderNodeEmission")
+    mo = mn.nodes.new("ShaderNodeOutputMaterial")
+    em.inputs[0].default_value = (*color, 1.0)
+    em.inputs[1].default_value = 1.2
+    mn.links.new(em.outputs[0], mo.inputs[0])
+    obj.data.materials.append(mat)
     return obj
 
-# Orbit animation
-def orbit(obj, radius, speed):
-    for f in range(1, 251):
-        angle = math.radians(speed * f)
-        obj.location.x = math.cos(angle) * radius
-        obj.location.y = math.sin(angle) * radius
-        obj.keyframe_insert("location", frame=f)
+# ================= SATURN RINGS =================
+# Returns the mesh so the caller can add a counter-spin driver
+def add_saturn_rings(planet_obj):
+    bpy.ops.mesh.primitive_cylinder_add(
+        radius=3.2, depth=0.02, location=(0, 0, 0))
+    r = bpy.context.object
+    r.name   = "Saturn_Rings_Mesh"
+    r.parent = planet_obj
+    r.scale.x = 1.3
+    r.visible_shadow = False
+    mat = bpy.data.materials.new("Saturn_Ring_Mat")
+    mat.use_nodes    = True
+    mat.blend_method = 'BLEND'
+    mat.use_backface_culling = False
+    nt = mat.node_tree
+    for n in list(nt.nodes): nt.nodes.remove(n)
+    out   = nt.nodes.new("ShaderNodeOutputMaterial")
+    coord = nt.nodes.new("ShaderNodeTexCoord")
+    mapping = nt.nodes.new("ShaderNodeMapping")
+    mapping.inputs["Scale"].default_value[0] = 2.0
+    tex   = nt.nodes.new("ShaderNodeTexImage")
+    try:
+        img = bpy.data.images.load(TEX["rings"], check_existing=True)
+        img.colorspace_settings.name = "sRGB"
+        tex.image = img
+    except Exception:
+        pass
+    transp = nt.nodes.new("ShaderNodeBsdfTransparent")
+    bsdf   = nt.nodes.new("ShaderNodeBsdfPrincipled")
+    mix    = nt.nodes.new("ShaderNodeMixShader")
+    mix.inputs["Fac"].default_value = 0.35
+    nt.links.new(coord.outputs["UV"],       mapping.inputs["Vector"])
+    nt.links.new(mapping.outputs["Vector"], tex.inputs["Vector"])
+    nt.links.new(tex.outputs["Color"],      bsdf.inputs["Base Color"])
+    nt.links.new(transp.outputs["BSDF"],    mix.inputs[1])
+    nt.links.new(bsdf.outputs["BSDF"],      mix.inputs[2])
+    nt.links.new(mix.outputs["Shader"],     out.inputs["Surface"])
+    r.data.materials.append(mat)
+    return r
 
-# Sun
-sun = make_planet("Sun", 2.0, 0)
-sun.data.materials.append(load_tex_mat("SunMat", TEX+"sun.jpg", emission=4.0))
+# ================= URANUS RINGS =================
+# Returns the mesh so the caller can add a counter-spin driver
+def add_uranus_rings(planet_obj):
+    bpy.ops.mesh.primitive_torus_add(
+        major_radius=2.2,
+        minor_radius=0.04,
+        major_segments=128,
+        minor_segments=6,
+        location=(0, 0, 0))
+    r = bpy.context.object
+    r.name   = "Uranus_Rings_Mesh"
+    r.parent = planet_obj
+    r.visible_shadow = False
+    mat = bpy.data.materials.new("Uranus_Ring_Mat")
+    mat.use_nodes    = True
+    mat.blend_method = 'BLEND'
+    mat.use_backface_culling = False
+    nt = mat.node_tree
+    for n in list(nt.nodes): nt.nodes.remove(n)
+    out  = nt.nodes.new("ShaderNodeOutputMaterial")
+    emit = nt.nodes.new("ShaderNodeEmission")
+    emit.inputs[0].default_value = (0.5, 0.55, 0.6, 1.0)
+    emit.inputs[1].default_value = 0.5
+    nt.links.new(emit.outputs[0], out.inputs[0])
+    r.data.materials.append(mat)
+    return r
 
-# Earth
-earth = make_planet("Earth", 0.5, 9.0, 1.6)
-earth.data.materials.append(load_tex_mat("EarthMat", TEX+"earth_daymap.jpg"))
+# ================= DRIVER HELPERS =================
+def add_location_drivers(obj, dist, orbit_speed, offset_angle=0.0):
+    for axis, trig in ((0, "cos"), (1, "sin")):
+        obj.driver_remove("location", axis)
+        fc  = obj.driver_add("location", axis)
+        drv = fc.driver
+        drv.type = 'SCRIPTED'
+        var = drv.variables.new()
+        var.name = "frame"
+        var.type = 'SINGLE_PROP'
+        t = var.targets[0]
+        t.id_type   = 'SCENE'
+        t.id        = scene
+        t.data_path = "frame_current"
+        drv.expression = f"{trig}(frame * {orbit_speed} + {offset_angle}) * {dist}"
 
-# Moon
-bpy.ops.mesh.primitive_uv_sphere_add(radius=0.13, location=(10, 0, 0))
-moon = bpy.context.active_object
+def add_rotation_driver(obj, spin_speed, axis=2):
+    obj.driver_remove("rotation_euler", axis)
+    fc  = obj.driver_add("rotation_euler", axis)
+    drv = fc.driver
+    drv.type = 'SCRIPTED'
+    var = drv.variables.new()
+    var.name = "frame"
+    var.type = 'SINGLE_PROP'
+    t = var.targets[0]
+    t.id_type   = 'SCENE'
+    t.id        = scene
+    t.data_path = "frame_current"
+    drv.expression = f"frame * {spin_speed}"
 
-# Lights
-bpy.ops.object.light_add(type='POINT', location=(0,0,0))
+# ================= PLANET TABLE =================
+#  name       radius  dist   tilt°    orb_N  spin_N  tex_key   offset
+PLANETS = [
+    ("Mercury", 0.35,   4.5,   0.03,    16,     1,   "mercury",  0.00),
+    ("Venus",   0.85,   6.5, 177.40,    10,    -1,   "venus",    0.70),
+    ("Earth",   0.90,   8.5,  23.44,     8,    60,   "earth",    1.40),
+    ("Mars",    0.50,  11.0,  25.19,     6,    58,   "mars",     2.10),
+    ("Jupiter", 1.80,  16.0,   3.13,     4,    20,   "jupiter",  2.80),  # reduced from 145
+    ("Saturn",  1.60,  21.5,  26.73,     3,     2,   "saturn",   3.50),
+    ("Uranus",  1.20,  27.0,  97.77,     2,    -2,   "uranus",   4.20),
+    ("Neptune", 1.10,  32.0,  28.32,     1,    90,   "neptune",  4.90),
+    ("Pluto",   0.22,  36.0,  57.47,     1,    -9,   "pluto",    5.60),
+]
 
-# Animation
-orbit(earth, 9.0, 0.3)
+planet_objs = {}
 
-print("Done! Press Space to play animation, F12 to render.")
+for (pname, pradius, pdist, tilt_deg, orb_N, spin_N, tex_key, offset) in PLANETS:
+
+    make_orbit_ring(pname, pdist)
+
+    bpy.ops.mesh.primitive_uv_sphere_add(
+        radius=pradius, segments=64, ring_count=32,
+        location=(pdist, 0, 0))
+    planet = bpy.context.object
+    planet.name = pname
+    bpy.ops.object.shade_smooth()
+
+    planet.rotation_mode  = 'XYZ'
+    planet.rotation_euler = (0.0, math.radians(tilt_deg), 0.0)
+
+    make_material(planet, tex_key)
+
+    if pname == "Saturn":
+        # Counter-spin the rings opposite to the planet's Z spin.
+        # This keeps the disc locked in world space so it never goes
+        # edge-on and disappears mid-animation.
+        rings_mesh = add_saturn_rings(planet)
+        rings_mesh.rotation_mode = 'XYZ'
+        add_rotation_driver(rings_mesh, -spn(spin_N), axis=2)
+
+    if pname == "Uranus":
+        rings_mesh = add_uranus_rings(planet)
+        rings_mesh.rotation_mode = 'XYZ'
+        add_rotation_driver(rings_mesh, -spn(spin_N), axis=2)
+
+    add_location_drivers(planet, pdist, orb(orb_N), offset_angle=offset)
+    add_rotation_driver(planet,         spn(spin_N), axis=2)
+
+    planet_objs[pname] = planet
+
+# ================= EARTH'S MOON =================
+earth     = planet_objs["Earth"]
+moon_dist = 1.6
+MOON_ORB_N = 2
+
+make_orbit_ring("Moon", moon_dist, color=(0.8, 0.8, 0.35), parent=earth)
+
+bpy.ops.mesh.primitive_uv_sphere_add(
+    radius=0.22, segments=24, ring_count=12,
+    location=(moon_dist, 0, 0))
+moon = bpy.context.object
+moon.name   = "Moon"
+moon.parent = earth
+bpy.ops.object.shade_smooth()
+make_material(moon, "moon")
+add_location_drivers(moon, moon_dist, orb(MOON_ORB_N), offset_angle=0.0)
+
+# ================= INNER ASTEROID BELT (Mars–Jupiter) =================
+import random
+random.seed(42)
+
+belt_mat = bpy.data.materials.new("Asteroid_Mat")
+belt_mat.use_nodes = True
+nt = belt_mat.node_tree
+for n in list(nt.nodes): nt.nodes.remove(n)
+out  = nt.nodes.new("ShaderNodeOutputMaterial")
+emit = nt.nodes.new("ShaderNodeEmission")
+emit.inputs[0].default_value = (0.35, 0.30, 0.25, 1.0)
+emit.inputs[1].default_value = 0.8
+nt.links.new(emit.outputs[0], out.inputs[0])
+
+BELT_INNER = 12.2
+BELT_OUTER = 14.5
+NUM_ASTEROIDS = 280
+
+for i in range(NUM_ASTEROIDS):
+    angle = random.uniform(0, 2 * math.pi)
+    dist  = random.uniform(BELT_INNER, BELT_OUTER)
+    z_off = random.uniform(-0.25, 0.25)
+    size  = random.uniform(0.04, 0.13)
+
+    bpy.ops.mesh.primitive_ico_sphere_add(
+        radius=size, subdivisions=1,
+        location=(math.cos(angle)*dist, math.sin(angle)*dist, z_off))
+    ast = bpy.context.object
+    ast.name = f"Asteroid_{i:03d}"
+    ast.visible_shadow = False
+    ast.rotation_euler = (
+        random.uniform(0, math.pi),
+        random.uniform(0, math.pi),
+        random.uniform(0, math.pi))
+    ast.data.materials.clear()
+    ast.data.materials.append(belt_mat)
+
+    ast_orb_n = max(1, round(8 * BELT_INNER / dist))
+    add_location_drivers(ast, dist, orb(ast_orb_n), offset_angle=angle)
+
+# ================= OUTER KUIPER BELT (beyond Pluto) =================
+random.seed(99)
+
+kuiper_mat = bpy.data.materials.new("Kuiper_Mat")
+kuiper_mat.use_nodes = True
+nt = kuiper_mat.node_tree
+for n in list(nt.nodes): nt.nodes.remove(n)
+out  = nt.nodes.new("ShaderNodeOutputMaterial")
+emit = nt.nodes.new("ShaderNodeEmission")
+emit.inputs[0].default_value = (0.45, 0.52, 0.65, 1.0)
+emit.inputs[1].default_value = 0.6
+nt.links.new(emit.outputs[0], out.inputs[0])
+
+KUIPER_INNER = 38.0
+KUIPER_OUTER = 52.0
+NUM_KUIPER   = 350
+
+for i in range(NUM_KUIPER):
+    angle = random.uniform(0, 2 * math.pi)
+    dist  = random.uniform(KUIPER_INNER, KUIPER_OUTER)
+    z_off = random.uniform(-1.2, 1.2)
+    size  = random.uniform(0.03, 0.18) if random.random() > 0.05 else random.uniform(0.20, 0.40)
+
+    bpy.ops.mesh.primitive_ico_sphere_add(
+        radius=size, subdivisions=1,
+        location=(math.cos(angle)*dist, math.sin(angle)*dist, z_off))
+    kbo = bpy.context.object
+    kbo.name = f"Kuiper_{i:03d}"
+    kbo.visible_shadow = False
+    kbo.rotation_euler = (
+        random.uniform(0, math.pi),
+        random.uniform(0, math.pi),
+        random.uniform(0, math.pi))
+    kbo.data.materials.clear()
+    kbo.data.materials.append(kuiper_mat)
+
+    kbo_orb_n = max(1, round(3 * KUIPER_INNER / dist))
+    add_location_drivers(kbo, dist, orb(kbo_orb_n), offset_angle=angle)
+
+# ================= SCATTERED DISC (beyond Kuiper) =================
+random.seed(7)
+
+scatter_mat = bpy.data.materials.new("ScatterDisc_Mat")
+scatter_mat.use_nodes = True
+nt = scatter_mat.node_tree
+for n in list(nt.nodes): nt.nodes.remove(n)
+out  = nt.nodes.new("ShaderNodeOutputMaterial")
+emit = nt.nodes.new("ShaderNodeEmission")
+emit.inputs[0].default_value = (0.30, 0.35, 0.50, 1.0)
+emit.inputs[1].default_value = 0.45
+nt.links.new(emit.outputs[0], out.inputs[0])
+
+SCATTER_INNER = 54.0
+SCATTER_OUTER = 64.0
+NUM_SCATTER   = 120
+
+for i in range(NUM_SCATTER):
+    angle = random.uniform(0, 2 * math.pi)
+    dist  = random.uniform(SCATTER_INNER, SCATTER_OUTER)
+    z_off = random.uniform(-3.0, 3.0)
+    size  = random.uniform(0.04, 0.22)
+
+    bpy.ops.mesh.primitive_ico_sphere_add(
+        radius=size, subdivisions=1,
+        location=(math.cos(angle)*dist, math.sin(angle)*dist, z_off))
+    sdo = bpy.context.object
+    sdo.name = f"Scatter_{i:03d}"
+    sdo.visible_shadow = False
+    sdo.rotation_euler = (
+        random.uniform(0, math.pi),
+        random.uniform(0, math.pi),
+        random.uniform(0, math.pi))
+    sdo.data.materials.clear()
+    sdo.data.materials.append(scatter_mat)
+
+    add_location_drivers(sdo, dist, orb(1), offset_angle=angle)
+
+# ════════════════════════════════════════════════════════════════════════════
+# ROCKETSHIP — launches from Earth, flies outward through the system.
+# Parented to Earth so it inherits Earth's orbital motion as its launch point,
+# then animates its LOCAL offset away from Earth (keyframed, not driver-based,
+# since this is a one-time scripted event rather than a repeating cycle).
+# ════════════════════════════════════════════════════════════════════════════
+
+def make_emit_mat(name, color, strength=1.6):
+    mat = bpy.data.materials.new(name)
+    mat.use_nodes = True
+    nt = mat.node_tree
+    for n in list(nt.nodes): nt.nodes.remove(n)
+    out  = nt.nodes.new("ShaderNodeOutputMaterial")
+    emit = nt.nodes.new("ShaderNodeEmission")
+    emit.inputs[0].default_value = (*color, 1.0)
+    emit.inputs[1].default_value = strength
+    nt.links.new(emit.outputs[0], out.inputs[0])
+    return mat
+
+
+def build_rocketship(parent_planet, launch_frame_start, launch_frame_end,
+                      local_launch_dir=(0, 0, 1), travel_distance=40.0):
+    """
+    Builds a simple composite rocketship (body, nose cone, fins) and parents
+    it to parent_planet (Earth). It launches from the planet's surface and
+    flies outward along local_launch_dir (in the planet's local space),
+    covering travel_distance units over [launch_frame_start, launch_frame_end].
+    Because it's parented, it automatically launches from wherever Earth is
+    in its orbit at that point in the animation.
+    """
+    body_mat = make_emit_mat("Rocket_BodyMat", (0.88, 0.88, 0.90), 1.7)
+    fin_mat  = make_emit_mat("Rocket_FinMat",  (0.75, 0.15, 0.12), 1.5)
+    nose_mat = make_emit_mat("Rocket_NoseMat", (0.65, 0.68, 0.72), 1.7)
+
+    length = 0.55
+    radius = 0.09
+
+    bpy.ops.mesh.primitive_cylinder_add(radius=radius, depth=length, vertices=24,
+                                         location=(0, 0, 0))
+    body = bpy.context.object
+    body.name = "Rocket_Body"
+    body.data.materials.append(body_mat)
+    bpy.ops.object.shade_smooth()
+
+    bpy.ops.mesh.primitive_cone_add(radius1=radius, radius2=0.0, depth=length * 0.45,
+                                     location=(0, 0, length / 2 + length * 0.22))
+    nose = bpy.context.object
+    nose.name = "Rocket_Nose"
+    nose.data.materials.append(nose_mat)
+    bpy.ops.object.shade_smooth()
+    nose.parent = body
+
+    for i, ang in enumerate((0, 120, 240)):
+        bpy.ops.mesh.primitive_cone_add(radius1=radius * 1.6, radius2=0.0,
+                                         depth=length * 0.35,
+                                         location=(0, 0, -length * 0.35))
+        fin = bpy.context.object
+        fin.name = f"Rocket_Fin_{i}"
+        fin.scale = (1.0, 0.12, 1.0)
+        fin.rotation_euler[2] = math.radians(ang)
+        fin.location.x = math.cos(math.radians(ang)) * radius * 1.1
+        fin.location.y = math.sin(math.radians(ang)) * radius * 1.1
+        fin.data.materials.append(fin_mat)
+        bpy.ops.object.shade_smooth()
+        fin.parent = body
+
+    bpy.ops.mesh.primitive_cone_add(radius1=radius * 0.7, radius2=0.0,
+                                     depth=length * 0.6,
+                                     location=(0, 0, -length * 0.5 - length * 0.25))
+    flame = bpy.context.object
+    flame.name = "Rocket_Flame"
+    flame.rotation_euler[0] = math.radians(180)
+    flame.data.materials.append(make_emit_mat("Rocket_FlameMat", (1.0, 0.55, 0.1), 5.0))
+    bpy.ops.object.shade_smooth()
+    flame.parent = body
+
+    # Parent the whole rocket to Earth — it now lives in Earth's local space.
+    body.parent = parent_planet
+    body.matrix_parent_inverse = parent_planet.matrix_world.inverted()
+
+    # Orient the rocket to point along its launch direction.
+    import mathutils
+    dir_vec = mathutils.Vector(local_launch_dir).normalized()
+    rot = dir_vec.to_track_quat('Z', 'Y').to_matrix().to_4x4()
+    body.matrix_local = rot
+
+    # Hide before launch, appear at the surface, fly outward, then fade.
+    surface_offset = mathutils.Vector(local_launch_dir).normalized() * (
+        PLANETS_BY_NAME["Earth"][1] * 1.05)   # just above Earth's radius
+
+    body.scale = (0, 0, 0)
+    body.keyframe_insert(data_path="scale", frame=max(1, launch_frame_start - 1))
+
+    body.location = surface_offset
+    body.scale = (1, 1, 1)
+    body.keyframe_insert(data_path="location", frame=launch_frame_start)
+    body.keyframe_insert(data_path="scale",    frame=launch_frame_start)
+
+    end_offset = dir_vec * travel_distance
+    body.location = end_offset
+    body.keyframe_insert(data_path="location", frame=launch_frame_end)
+
+    # Fade out (scale down) shortly after reaching the end point.
+    fade_out_frame = min(TOTAL_FRAMES, launch_frame_end + 20)
+    body.keyframe_insert(data_path="scale", frame=launch_frame_end)
+    body.scale = (0, 0, 0)
+    body.keyframe_insert(data_path="scale", frame=fade_out_frame)
+
+    return body
+
+
+# ════════════════════════════════════════════════════════════════════════════
+# COMETS — small icy nucleus + long, thin, fading tail. These sweep through
+# on one-time straight diagonal paths, fading in and out, spaced one after
+# another so only one is ever visible at a time.
+# ════════════════════════════════════════════════════════════════════════════
+
+def make_comet_nucleus_mat(name, color=(0.75, 0.85, 0.95)):
+    mat = bpy.data.materials.new(name)
+    mat.use_nodes = True
+    nt = mat.node_tree
+    for n in list(nt.nodes): nt.nodes.remove(n)
+    out   = nt.nodes.new("ShaderNodeOutputMaterial")
+    emit  = nt.nodes.new("ShaderNodeEmission")
+    noise = nt.nodes.new("ShaderNodeTexNoise")
+    ramp  = nt.nodes.new("ShaderNodeValToRGB")
+    tc    = nt.nodes.new("ShaderNodeTexCoord")
+    noise.inputs["Scale"].default_value = 6.0
+    cr = ramp.color_ramp
+    cr.elements[0].color = (color[0]*0.5, color[1]*0.5, color[2]*0.6, 1)
+    cr.elements[1].color = (color[0]*1.3, color[1]*1.3, color[2]*1.3, 1)
+    nt.links.new(tc.outputs["Generated"], noise.inputs["Vector"])
+    nt.links.new(noise.outputs["Fac"], ramp.inputs["Fac"])
+    nt.links.new(ramp.outputs["Color"], emit.inputs["Color"])
+    emit.inputs["Strength"].default_value = 2.2
+    nt.links.new(emit.outputs["Emission"], out.inputs["Surface"])
+    return mat
+
+
+def make_comet_tail_mat(name, color=(0.65, 0.85, 1.0)):
+    """Thin, wispy, fast-fading tail — bright only near the nucleus."""
+    mat = bpy.data.materials.new(name)
+    mat.use_nodes = True
+    mat.blend_method = 'BLEND'
+    nt = mat.node_tree
+    for n in list(nt.nodes): nt.nodes.remove(n)
+    out   = nt.nodes.new("ShaderNodeOutputMaterial")
+    emit  = nt.nodes.new("ShaderNodeEmission")
+    trans = nt.nodes.new("ShaderNodeBsdfTransparent")
+    mix   = nt.nodes.new("ShaderNodeMixShader")
+    tc    = nt.nodes.new("ShaderNodeTexCoord")
+    ramp  = nt.nodes.new("ShaderNodeValToRGB")
+
+    cr = ramp.color_ramp
+    cr.elements[0].position = 0.0
+    cr.elements[0].color = (0, 0, 0, 1)
+    cr.elements[1].position = 0.55
+    cr.elements[1].color = (1, 1, 1, 1)
+
+    emit.inputs["Color"].default_value = (*color, 1)
+    emit.inputs["Strength"].default_value = 3.0
+
+    nt.links.new(tc.outputs["Generated"], ramp.inputs["Fac"])
+    nt.links.new(ramp.outputs["Color"], mix.inputs["Fac"])
+    nt.links.new(trans.outputs["BSDF"], mix.inputs[1])
+    nt.links.new(emit.outputs["Emission"], mix.inputs[2])
+    nt.links.new(mix.outputs["Shader"], out.inputs["Surface"])
+    return mat
+
+
+def spawn_comet(name, start, end, nucleus_radius, frame_start, frame_end, fade_frames=24):
+    """Small nucleus + thin fading tail, flying start->end, fading in/out via
+    emission strength, hidden (scaled to zero) outside its active window."""
+    bpy.ops.mesh.primitive_ico_sphere_add(radius=nucleus_radius, subdivisions=3,
+                                           location=(0, 0, 0))
+    nucleus = bpy.context.object
+    nucleus.name = name
+    nucleus.visible_shadow = False
+
+    mod = nucleus.modifiers.new("Displace", type='DISPLACE')
+    tex = bpy.data.textures.new(name + "_disp", type='DISTORTED_NOISE')
+    tex.noise_scale = 0.5
+    mod.texture = tex
+    mod.strength = 0.3 * nucleus_radius
+    bpy.ops.object.shade_smooth()
+    nucleus_mat = make_comet_nucleus_mat(name + "_NucleusMat")
+    nucleus.data.materials.append(nucleus_mat)
+
+    tail_len = nucleus_radius * 22
+    bpy.ops.mesh.primitive_cone_add(radius1=nucleus_radius * 0.45, radius2=0.0,
+                                     depth=tail_len)
+    tail = bpy.context.object
+    tail.name = name + "_Tail"
+    tail.visible_shadow = False
+    tail_mat = make_comet_tail_mat(name + "_TailMat")
+    tail.data.materials.append(tail_mat)
+    bpy.ops.object.shade_smooth()
+
+    tail.parent = nucleus
+    tail.location = (0, 0, -tail_len * 0.5)
+    tail.rotation_euler[0] = math.radians(180)
+
+    nucleus_emit = nucleus_mat.node_tree.nodes["Emission"]
+    tail_emit    = tail_mat.node_tree.nodes["Emission"]
+    nucleus_full = nucleus_emit.inputs["Strength"].default_value
+    tail_full    = tail_emit.inputs["Strength"].default_value
+
+    fade_in_end    = min(frame_end, frame_start + fade_frames)
+    fade_out_start = max(frame_start, frame_end - fade_frames)
+
+    for node, full in ((nucleus_emit, nucleus_full), (tail_emit, tail_full)):
+        node.inputs["Strength"].default_value = 0.0
+        node.inputs["Strength"].keyframe_insert(data_path="default_value", frame=frame_start)
+        node.inputs["Strength"].default_value = full
+        node.inputs["Strength"].keyframe_insert(data_path="default_value", frame=fade_in_end)
+        node.inputs["Strength"].keyframe_insert(data_path="default_value", frame=fade_out_start)
+        node.inputs["Strength"].default_value = 0.0
+        node.inputs["Strength"].keyframe_insert(data_path="default_value", frame=frame_end)
+
+    nucleus.scale = (0, 0, 0)
+    nucleus.keyframe_insert(data_path="scale", frame=max(1, frame_start - 1))
+    nucleus.scale = (1, 1, 1)
+    nucleus.keyframe_insert(data_path="scale", frame=frame_start)
+    nucleus.keyframe_insert(data_path="scale", frame=frame_end)
+    nucleus.scale = (0, 0, 0)
+    nucleus.keyframe_insert(data_path="scale", frame=min(TOTAL_FRAMES, frame_end + 1))
+
+    import mathutils
+    start_vec = mathutils.Vector(start)
+    end_vec   = mathutils.Vector(end)
+    direction = end_vec - start_vec
+    rot_mat   = direction.to_track_quat('Z', 'Y').to_matrix().to_4x4()
+    nucleus.matrix_world = mathutils.Matrix.Translation(start_vec) @ rot_mat
+    nucleus.keyframe_insert(data_path="rotation_euler", frame=frame_start)
+
+    span = max(frame_end - frame_start, 1)
+    for f in (frame_start, frame_end):
+        t = (f - frame_start) / span
+        nucleus.location.x = start[0] + (end[0] - start[0]) * t
+        nucleus.location.y = start[1] + (end[1] - start[1]) * t
+        nucleus.location.z = start[2] + (end[2] - start[2]) * t
+        nucleus.keyframe_insert(data_path="location", frame=f)
+
+    return nucleus
+
+
+# ── Schedule comets one after another, fitting inside TOTAL_FRAMES ──────────
+random.seed(23)
+COMET_DURATION_SECONDS = 6
+COMET_DURATION_FRAMES  = COMET_DURATION_SECONDS * scene.render.fps
+COMET_GAP_FRAMES       = 25
+N_COMETS               = 6
+
+current_frame = 40   # leave a little breathing room at the very start
+spawned_comets = 0
+for i in range(N_COMETS):
+    if current_frame + COMET_DURATION_FRAMES > TOTAL_FRAMES:
+        print(f"[info] Only spawned {spawned_comets} of {N_COMETS} comets "
+              f"— not enough frames left in TOTAL_FRAMES={TOTAL_FRAMES}.")
+        break
+
+    cx = random.uniform(-50, 50)
+    cy = random.uniform(-50, 50)
+    cz = random.uniform(5, 30)
+    dx = random.uniform(-12, 12)
+    dy = random.uniform(-12, 12)
+    dz = random.uniform(-20, -10)
+
+    frame_start = current_frame
+    frame_end   = frame_start + COMET_DURATION_FRAMES
+
+    spawn_comet(f"Comet_{i:02d}",
+                start=(cx, cy, cz), end=(cx + dx, cy + dy, cz + dz),
+                nucleus_radius=0.18,
+                frame_start=frame_start, frame_end=frame_end,
+                fade_frames=24)
+
+    spawned_comets += 1
+    current_frame = frame_end + COMET_GAP_FRAMES
+
+
+# ── Launch the rocketship from Earth partway through the animation ─────────
+PLANETS_BY_NAME = {p[0]: p for p in PLANETS}
+earth_obj = planet_objs["Earth"]
+
+build_rocketship(
+    earth_obj,
+    launch_frame_start=80,
+    launch_frame_end=80 + 6 * scene.render.fps,   # 6-second flight outward
+    local_launch_dir=(0.6, 0.4, 0.5),             # outward + up, in Earth's local space
+    travel_distance=45.0
+)
+
+print(f"  Comets     {spawned_comets} spawned, {COMET_DURATION_SECONDS}s each, sequential")
+print("  Rocketship launched from Earth")
+
+# ================= SUN =================
+bpy.ops.mesh.primitive_uv_sphere_add(
+    radius=2.8, segments=64, ring_count=32, location=(0, 0, 0))
+sun = bpy.context.object
+sun.name = "SUN"
+bpy.ops.object.shade_smooth()
+make_material(sun, "sun", emission=True)
+add_rotation_driver(sun, spn(😎, axis=2)
+
+# ================= LIGHTS =================
+bpy.ops.object.light_add(type='POINT', location=(0, 0, 0))
+light = bpy.context.object
+light.name                  = "SUN_Light"
+light.data.energy           = 300000
+light.data.shadow_soft_size = 3.0
+light.data.use_shadow       = False
+try:
+    light.data.cycles.cast_shadow = False
+except AttributeError:
+    pass
+
+bpy.ops.object.light_add(type='SUN', location=(0, 0, 200))
+ambient = bpy.context.object
+ambient.name            = "Ambient_Fill"
+ambient.data.energy     = 1.5
+ambient.data.use_shadow = False
+try:
+    ambient.data.cycles.cast_shadow = False
+except AttributeError:
+    pass
+
+# ================= CAMERA =================
+bpy.ops.object.camera_add(location=(0, -70, 50))
+cam = bpy.context.object
+cam.name = "Camera"
+cam.rotation_euler = (math.radians(52), 0, 0)
+cam.data.lens      = 18
+cam.data.clip_end  = 2000
+scene.camera = cam
+
+# ================= WORLD / STARS =================
+STARS_PATH = r"C:\Users\JohnLlegado\Pictures\Planets\Stars_Texture\stars.jpg"
+
+world = bpy.data.worlds["World"]
+world.use_nodes = True
+nt = world.node_tree
+for n in list(nt.nodes): nt.nodes.remove(n)
+
+coord   = nt.nodes.new("ShaderNodeTexCoord")
+mapping = nt.nodes.new("ShaderNodeMapping")
+tex     = nt.nodes.new("ShaderNodeTexImage")
+bg      = nt.nodes.new("ShaderNodeBackground")
+out     = nt.nodes.new("ShaderNodeOutputWorld")
+
+try:
+    img = bpy.data.images.load(STARS_PATH, check_existing=True)
+    img.colorspace_settings.name = "sRGB"
+    tex.image = img
+except Exception as e:
+    print(f"  [WARN] Stars texture not loaded: {e}")
+
+bg.inputs[1].default_value = 1.2
+
+nt.links.new(coord.outputs["Generated"], mapping.inputs["Vector"])
+nt.links.new(mapping.outputs["Vector"],  tex.inputs["Vector"])
+nt.links.new(tex.outputs["Color"],       bg.inputs["Color"])
+nt.links.new(bg.outputs["Background"],   out.inputs["Surface"])
+
+# ================= DISABLE ALL SHADOWS =================
+scene.eevee.use_shadows = False
+for obj in bpy.context.scene.objects:
+    if obj.type == 'MESH':
+        obj.visible_shadow = False
+    for slot in obj.material_slots:
+        if slot.material:
+            try:
+                slot.material.shadow_method = 'NONE'
+            except AttributeError:
+                pass
+
+scene.frame_set(1)
+
     </pre>
 
   </div>
