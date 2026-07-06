@@ -97,6 +97,15 @@
 <div id="footer"></div>
 
 <script>
+// Load footer
+fetch('footer.html')
+  .then(response => response.text())
+  .then(data => {
+    const footerDiv = document.getElementById('footer');
+    if (footerDiv) footerDiv.innerHTML = data;
+  })
+  .catch(error => console.log('Footer loading error:', error));
+
 // Mobile menu
 const menuBtnMobile = document.getElementById('menu-btn-mobile');
 if (menuBtnMobile) {

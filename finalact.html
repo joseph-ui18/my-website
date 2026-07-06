@@ -152,6 +152,30 @@
       </section>
 
       <section class="mb-10">
+        <h2 class="text-2xl font-semibold text-gray-800 mb-4">Reference vs Final Comparison</h2>
+        <p class="text-gray-700 mb-4">Watch how the rotoscope project transforms from the original reference video to the final polished output:</p>
+        <div class="mb-4">
+          <button id="sync-toggle-btn" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-lg transition-colors">
+            Play Side by Side Comparison
+          </button>
+        </div>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <div class="rounded-xl overflow-hidden shadow-lg">
+            <h3 class="bg-blue-500 text-white p-3 font-semibold">Reference Video</h3>
+            <div class="aspect-video">
+              <div id="ref-video-player" class="w-full h-full"></div>
+            </div>
+          </div>
+          <div class="rounded-xl overflow-hidden shadow-lg">
+            <h3 class="bg-green-500 text-white p-3 font-semibold">Final Video</h3>
+            <div class="aspect-video">
+              <div id="final-video-player" class="w-full h-full"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="mb-10">
         <h2 class="text-2xl font-semibold text-gray-800 mb-4">Final Output</h2>
         <div class="rounded-xl bg-white border p-6 shadow-lg">
           <p class="text-gray-700 leading-7">This final output overview shows the completed rotoscope result after all progress stages are combined. Review the final presentation and polish the animation before sharing.</p>
@@ -187,8 +211,42 @@
       </div>
 
       <div class="rounded-xl bg-white border p-6 shadow-sm">
-        <h2 class="text-2xl font-semibold text-gray-800 mb-4">Next Steps</h2>
-        <p class="text-gray-700 leading-7">Continue the project by adding more progress videos, notes, and final presentation details as you build toward completion.</p>
+        <h2 class="text-2xl font-semibold text-gray-800 mb-4">Technical Specifications</h2>
+        <div class="space-y-4 text-gray-700 text-sm">
+          <div class="border-l-4 border-blue-500 pl-4">
+            <p class="font-semibold text-gray-800 mb-1">Tools that I Used</p>
+            <p>Adobe Photoshop, Adobe After Effects</p>
+          </div>
+          <div class="border-l-4 border-blue-500 pl-4">
+            <p class="font-semibold text-gray-800 mb-1">Resolution</p>
+            <p>1080p (Full HD)</p>
+          </div>
+          <div class="border-l-4 border-blue-500 pl-4">
+            <p class="font-semibold text-gray-800 mb-1">Frame Rate</p>
+            <p>60 FPS (Frames Per Second)</p>
+          </div>
+          <div class="border-l-4 border-blue-500 pl-4">
+            <p class="font-semibold text-gray-800 mb-1">Video Codec</p>
+            <p>H.264 (AVC)</p>
+          </div>
+          <div class="border-l-4 border-blue-500 pl-4">
+            <p class="font-semibold text-gray-800 mb-1">Audio Format</p>
+            <p>AAC Stereo, 128 kbps</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="rounded-xl bg-white border p-6 shadow-sm">
+        <h2 class="text-2xl font-semibold text-gray-800 mb-4">Credits</h2>
+        <p class="text-sm text-gray-700"><span class="font-semibold">Dancer:</span> Katokira</p>
+        <p class="text-sm text-gray-700"><span class="font-semibold">Original Song:</span> ENHYPEN (엔하이픈)</p>
+      </div>
+
+      <div class="rounded-xl bg-white border p-6 shadow-sm">
+        <h2 class="text-2xl font-semibold text-gray-800 mb-4">Credits Description</h2>
+        <p class="text-gray-700 leading-7 mb-4">This video may contain copyrighted material used under the principles of fair use (Section 107, U.S. Copyright Act) for purposes such as commentary, criticism, news reporting, teaching, and research. All rights remain with their respective owners.</p>
+        <p class="text-gray-700 text-sm mb-2"><span class="font-semibold">Song:</span> ENHYPEN (엔하이픈) 'XO (Only If You Say Yes)' @ENHYPENOFFICIAL</p>
+        <p class="text-gray-700 text-sm"><span class="font-semibold">Dancer:</span> Katokira - <a href="https://youtu.be/1i_ufoq8NcE?si=0e3yjROiLH3GR4ql" target="_blank" class="text-blue-600 hover:text-blue-800">https://youtu.be/1i_ufoq8NcE?si=0e3yjROiLH3GR4ql</a></p>
       </div>
     </aside>
   </div>
@@ -197,6 +255,69 @@
 <div id="footer"></div>
 
 <script>
+// Load YouTube IFrame API
+const tag = document.createElement('script');
+tag.src = "https://www.youtube.com/iframe_api";
+const firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+let refPlayer, finalPlayer;
+let isPlaying = false;
+
+// YouTube API Ready
+function onYouTubeIframeAPIReady() {
+  refPlayer = new YT.Player('ref-video-player', {
+    height: '100%',
+    width: '100%',
+    videoId: '1i_ufoq8NcE',
+    playerVars: {
+      'autoplay': 0,
+      'controls': 1,
+      'modestbranding': 1
+    }
+  });
+  
+  finalPlayer = new YT.Player('final-video-player', {
+    height: '100%',
+    width: '100%',
+    videoId: 'UG917ydTStc',
+    playerVars: {
+      'autoplay': 0,
+      'controls': 1,
+      'modestbranding': 1
+    }
+  });
+}
+
+// Sync Toggle Button
+const syncToggleBtn = document.getElementById('sync-toggle-btn');
+if (syncToggleBtn) {
+  syncToggleBtn.onclick = () => {
+    if (refPlayer && finalPlayer) {
+      if (isPlaying) {
+        refPlayer.pauseVideo();
+        finalPlayer.pauseVideo();
+        syncToggleBtn.textContent = 'Play Side by Side Comparison';
+        isPlaying = false;
+      } else {
+        refPlayer.playVideo();
+        finalPlayer.playVideo();
+        syncToggleBtn.textContent = 'Pause Side by Side Comparison';
+        isPlaying = true;
+      }
+    }
+  };
+}
+
+// Load footer
+fetch('footer.html')
+  .then(response => response.text())
+  .then(data => {
+    const footerDiv = document.getElementById('footer');
+    if (footerDiv) footerDiv.innerHTML = data;
+  })
+  .catch(error => console.log('Footer loading error:', error));
+
 const menuBtnMobile = document.getElementById('menu-btn-mobile');
 if (menuBtnMobile) {
   menuBtnMobile.onclick = () => {

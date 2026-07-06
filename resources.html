@@ -72,7 +72,7 @@
     <div class="bg-white rounded-xl shadow-sm border p-6">
       <h2 class="text-2xl font-semibold text-gray-800 mb-4">Multimedia Software</h2>
       <ul class="list-disc list-inside text-gray-700 space-y-2">
-        <li>Video editing tools (CapCut, Premiere Pro, DaVinci Resolve)</li>
+        <li>Video editing tools (CapCut, Adobe Photoshop, Adobe After Effects)</li>
         <li>Graphic design tools (Photoshop, Canva)</li>
         <li>Audio editing tools (Audacity)</li>
         <li>Animation tools (Blender, Adobe Animate)</li>
@@ -88,12 +88,28 @@
         <li>Step-by-step multimedia project guides</li>
       </ul>
     </div>
+
+    <div class="bg-white rounded-xl shadow-sm border p-6">
+      <h2 class="text-2xl font-semibold text-gray-800 mb-4">Rendering & Textures</h2>
+      <ul class="list-disc list-inside text-gray-700 space-y-2">
+        <li><a href="https://www.solarsystemscope.com/textures/" target="_blank" class="text-blue-600 hover:text-blue-800">Solar Textures | Solar System Scope</a></li>
+      </ul>
+    </div>
   </div>
 </main>
 
 <div id="footer"></div>
 
 <script>
+// Load footer
+fetch('footer.html')
+  .then(response => response.text())
+  .then(data => {
+    const footerDiv = document.getElementById('footer');
+    if (footerDiv) footerDiv.innerHTML = data;
+  })
+  .catch(error => console.log('Footer loading error:', error));
+
 // Mobile menu
 const menuBtnMobile = document.getElementById('menu-btn-mobile');
 if (menuBtnMobile) {
