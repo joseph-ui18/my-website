@@ -469,7 +469,7 @@ def make_material(obj, tex_key, emission=False, alpha=1.0):
     obj.visible_shadow = False
 
 # ================= ORBIT RING =================
-def make_orbit_ring(name, radius, color=(0.2, 0.4, 0.😎, parent=None):
+def make_orbit_ring(name, radius, color=(0.2, 0.4, 0.9), parent=None):
     verts  = 128
     coords = [(math.cos(2*math.pi*i/verts)*radius,
                math.sin(2*math.pi*i/verts)*radius, 0.0)
