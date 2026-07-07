@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Solar System</title>
+<title>Solar System Project</title>
 <link rel="icon" type="image/png" href="image.jpg">
 <script src="https://cdn.tailwindcss.com"></script>
 </head>
@@ -60,7 +60,7 @@
 
 <main class="container mx-auto mt-10 px-4 pb-12">
   <section class="mb-10">
-    <h1 class="text-3xl font-bold text-gray-800 mb-4">Solar System</h1>
+    <h1 class="text-3xl font-bold text-gray-800 mb-4">Solar System Project</h1>
     <p class="text-gray-700 max-w-3xl">
       Explore the Solar System project with video, explanation, method, an interactive Earth age calculator, and a script section for your final write-up.
     </p>
@@ -104,8 +104,8 @@
     <div class="rounded-xl bg-white border p-6 shadow-sm">
       <h3 class="text-lg font-semibold text-gray-900 mb-2">Step 1: Download Textures</h3>
       <p>
-        Go to solarsystemscope.com/textures and download all required texture files. Save them in one folder
-        (e.g. C:/Users/Joseph/Downloads/textures/).
+        In the top-right corner, click the "About" button, open the "Resources" section, and download all the required texture files. Save them in one folder.
+        (e.g. C:/Users/Deleon/Downloads/textures/).
       </p>
     </div>
 
@@ -117,7 +117,7 @@
         3. Click New to create a script<br>
         4. Paste the Python script into the editor<br>
         5. Update texture path:
-        <br><code>TEX = "C:/Users/Joseph/Downloads/textures/"</code>
+        <br><code>TEX = "C:/Users/Deleon/Downloads/textures/"</code>
       </p>
     </div>
 
@@ -166,7 +166,7 @@
         Run this command in Command Prompt:
       </p>
       <pre class="bg-gray-100 p-3 rounded-md overflow-x-auto text-sm">
-ffmpeg -framerate 24 -i "C:/tmp/%04d.png" -c:v libx264 -pix_fmt yuv420p "C:/Users/Joseph/OneDrive/Desktop/solar_system.mp4"
+        ffmpeg -framerate 30 -i "C:/tmp/%04d.png" -c:v libx264 -pix_fmt yuv420p "C:/Users/Deleon/OneDrive/Desktop/solar_system.mp4"
       </pre>
     </div>
 
@@ -1188,11 +1188,11 @@ scene.frame_set(1)
     </div>
     <div class="border-l-4 border-blue-500 pl-4">
       <p class="font-semibold text-gray-800 mb-1">Frame Rate</p>
-      <p>24 FPS</p>
+      <p>30 FPS</p>
     </div>
     <div class="border-l-4 border-blue-500 pl-4">
       <p class="font-semibold text-gray-800 mb-1">Total Frames</p>
-      <p>960</p>
+      <p>1200</p>
     </div>
     <div class="border-l-4 border-blue-500 pl-4">
       <p class="font-semibold text-gray-800 mb-1">Resolution</p>
@@ -1290,7 +1290,7 @@ const planetData = {
       'Moon: 1'
     ]
   },
-  Mors: {
+  Mars: {
     img: 'https://upload.wikimedia.org/wikipedia/commons/0/02/OSIRIS_Mars_true_color.jpg',
     desc: 'Red planet with giant volcanoes.',
     period: 1.88,
